@@ -12,11 +12,11 @@ namespace Scrutz.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class CampaignsController : ControllerBase
+    public class TestController : ControllerBase
     {
         private readonly ScrutzContext _context;
 
-        public CampaignsController(ScrutzContext context)
+        public TestController(ScrutzContext context)
         {
             _context = context;
         }

@@ -1,6 +1,6 @@
 ﻿namespace Scrutz.Model
 {
-    public enum ActiveStatus
+    public enum ActiveStatus 
     {
         Active,
         InActive

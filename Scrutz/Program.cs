@@ -9,6 +9,7 @@ using Scrutz.Repository;
 using Scrutz.Repository.Interface;
 using Scrutz.Service;
 using Scrutz.Service.Interface;
+using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -35,13 +36,15 @@ builder.Services.AddTransient<ICampaignService, CampaignService>();
 
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
-builder.Services.AddControllers();
+builder.Services.AddControllers()
+                .AddJsonOptions(options => { options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter()); });
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 //builder.Services.AddSwaggerGen();
 builder.Services.AddSwaggerGen(
     c =>
     {
+        
         c.AddSecurityDefinition("oauth2", new OpenApiSecurityScheme
          {
              Type = SecuritySchemeType.OAuth2,

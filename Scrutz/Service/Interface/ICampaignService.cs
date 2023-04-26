@@ -10,6 +10,6 @@ namespace Scrutz.Service.Interface
         Task<CampaignResponse> FindByIdAsync(int id);
         Task<CampaignResponse> UpdateAsync(int id, Campaign campaign);
         Task<CampaignResponse> DeleteAsync(int id);
-        //Task<CampaignResponse> UpdateActiveStatus(int id);
+        Task<CampaignResponse> UpdateActiveStatus(int id,ActiveStatus activeStatus);
     }
 }

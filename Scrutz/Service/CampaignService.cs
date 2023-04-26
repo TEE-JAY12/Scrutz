@@ -112,9 +112,26 @@ namespace Scrutz.Service
            
         }
 
-        //public Task<CampaignResponse> UpdateActiveStatus(int id)
-        //{
-        //    throw new NotImplementedException();
-        //}
+        public async Task<CampaignResponse> UpdateActiveStatus(int id,ActiveStatus activeStatus)
+        {
+            var existingcampaign = await _campaignRepository.FindAsync(id);
+            if (existingcampaign == null)
+            {
+                return new CampaignResponse("Campaign not found");
+            }
+            existingcampaign.CampaignStatus = activeStatus;
+            try
+            {
+                await _unitOfWork.CompleteAsync();
+                return new CampaignResponse(existingcampaign);
+            }
+            catch (Exception ex)
+            {
+                return new CampaignResponse($"An error occurred when updating the campaign: {ex.Message}");
+            }
+
+            
+        }
+
     }
 }

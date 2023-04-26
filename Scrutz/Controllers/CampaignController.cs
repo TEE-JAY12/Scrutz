@@ -13,7 +13,7 @@ namespace Scrutz.Controllers
 {
     [Authorize]
     [RequiredScope("Access_as_user")]
-    [Route("api/[controller]/test")]
+    [Route("api/[controller]")]
     [ApiController]
     public class CampaignController : ControllerBase
     {
@@ -120,5 +120,24 @@ namespace Scrutz.Controllers
             var campaignResource = result.Resource;
             return Ok(campaignResource);
         }
+
+        [HttpPut("UpdateActiveStatus/{id}")]
+        [ProducesResponseType(typeof(Campaign), 200)]
+        [ProducesResponseType(typeof(ErrorResource), 400)]
+        public async Task<IActionResult> UpdateActiveStatus(int id, [FromQuery] ActiveStatus activeStatus)
+        {
+            //var category = _mapper.Map<CampaignDTO, Campaign>(campaignDTO);
+            var result = await _campaignService.UpdateActiveStatus(id, activeStatus);
+
+            if (!result.Success)
+            {
+                return BadRequest(new ErrorResource(result.Message));
+            }
+
+            var campaignResource = result.Resource;
+            return Ok(campaignResource);
+        }
+
+
     }
 }

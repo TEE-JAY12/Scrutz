@@ -16,6 +16,7 @@ namespace Scrutz.Data
         {
             modelBuilder.Entity<Campaign>().HasKey(p => p.Id);
             modelBuilder.Entity<Campaign>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
+            modelBuilder.Entity<Campaign>().Property(u => u.CampaignStatus).HasConversion<string>().HasMaxLength(50);
             modelBuilder.Entity<Campaign>()
                 .Property(e => e.LinkedKeywords)
                 .HasMaxLength(300)

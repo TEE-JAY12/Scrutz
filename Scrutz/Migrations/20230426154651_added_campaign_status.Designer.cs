@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Scrutz.Data;
 
@@ -11,9 +12,11 @@ using Scrutz.Data;
 namespace Scrutz.Migrations
 {
     [DbContext(typeof(ScrutzContext))]
-    partial class ScrutzContextModelSnapshot : ModelSnapshot
+    [Migration("20230426154651_added_campaign_status")]
+    partial class added_campaign_status
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -36,11 +39,10 @@ namespace Scrutz.Migrations
                     b.Property<string>("CampaignName")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("CampaignStatus")
+                    b.Property<int?>("CampaignStatus")
                         .ValueGeneratedOnAdd()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)")
-                        .HasDefaultValue("InActive");
+                        .HasColumnType("int")
+                        .HasDefaultValue(1);
 
                     b.Property<DateTime?>("DailyDigestTime")
                         .HasColumnType("datetime2");
