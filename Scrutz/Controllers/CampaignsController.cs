@@ -68,7 +68,7 @@ namespace Scrutz.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!CampaignExists(id))
+                if (! CampaignExists(id))
                 {
                     return NotFound();
                 }

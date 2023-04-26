@@ -15,5 +15,7 @@ namespace Scrutz.Model
         public string[]? LinkedKeywords { get; set; }
         public DateTime? DailyDigestTime { get; set; }
 
+        public ActiveStatus CampaignStatus { get; set; }
+
     }
 }

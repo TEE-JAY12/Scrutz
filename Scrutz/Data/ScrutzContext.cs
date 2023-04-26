@@ -24,6 +24,7 @@ namespace Scrutz.Data
                     v => v.Split(',', StringSplitOptions.RemoveEmptyEntries)
                           .ToArray()
                 );
+            modelBuilder.Entity<Campaign>().Property(c => c.CampaignStatus).HasDefaultValue(ActiveStatus.InActive);
         }
 
     }
