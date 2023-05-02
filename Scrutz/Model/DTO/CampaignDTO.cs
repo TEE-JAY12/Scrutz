@@ -14,7 +14,7 @@ namespace Scrutz.Model.DTO
         public string[]? LinkedKeywords { get; set; }
         public DateTime? DailyDigestTime { get; set; }
 
-        public bool? ActiveCampaign { get; set; }
+        //public bool? ActiveCampaign { get; set; }
 
 
 

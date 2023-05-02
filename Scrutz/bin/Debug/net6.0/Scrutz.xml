@@ -1,0 +1,98 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Scrutz</name>
+    </assembly>
+    <members>
+        <member name="M:Scrutz.Controllers.CampaignController.GetCampaigns">
+            <summary>
+            Lists all campaigns.
+            </summary>
+            <returns>List of campaigns.</returns>
+        </member>
+        <member name="M:Scrutz.Controllers.CampaignController.PostCampaign(Scrutz.Model.DTO.CampaignDTO)">
+            <summary>
+            Saves a new campaign.
+            </summary>
+            <param name="campaign">Campaign data.</param>
+            <returns>Response for the request.</returns>
+        </member>
+        <member name="M:Scrutz.Controllers.CampaignController.PutCampaign(System.Int32,Scrutz.Model.DTO.CampaignDTO)">
+            <summary>
+            Updates an existing campaign according to an identifier.
+            </summary>
+            <param name="id">Campaign identifier.</param>
+            <param name="campaign">Updated campaign data.</param>
+            <returns>Response for the request.</returns>
+        </member>
+        <member name="M:Scrutz.Controllers.CampaignController.DeleteCampaign(System.Int32)">
+            <summary>
+            Deletes a given campaign according to an identifier.
+            </summary>
+            <param name="id">Campaign identifier.</param>
+            <returns>Response for the request.</returns>
+        </member>
+        <member name="M:Scrutz.Controllers.CampaignController.GetCampaign(System.Int32)">
+            <summary>
+            Get campaign details according to an identifier.
+            </summary>
+            <returns>Get campaign details </returns>
+        </member>
+        <member name="M:Scrutz.Controllers.CampaignController.UpdateActiveStatus(System.Int32,Scrutz.Model.ActiveStatus)">
+            <summary>
+            Update Active Status.
+            </summary>
+            <returns>Response for the request</returns>
+        </member>
+        <member name="T:Scrutz.Migrations.Inital">
+            <inheritdoc />
+        </member>
+        <member name="M:Scrutz.Migrations.Inital.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Scrutz.Migrations.Inital.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Scrutz.Migrations.Inital.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:Scrutz.Migrations.added_campaign_status">
+            <inheritdoc />
+        </member>
+        <member name="M:Scrutz.Migrations.added_campaign_status.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Scrutz.Migrations.added_campaign_status.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Scrutz.Migrations.added_campaign_status.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:Scrutz.Migrations.Edited_the_campaign_status_column">
+            <inheritdoc />
+        </member>
+        <member name="M:Scrutz.Migrations.Edited_the_campaign_status_column.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Scrutz.Migrations.Edited_the_campaign_status_column.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Scrutz.Migrations.Edited_the_campaign_status_column.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Scrutz.Service.Communication.CampaignResponse.#ctor(Scrutz.Model.Campaign)">
+            <summary>
+            Creates a success response.
+            </summary>
+            <param name="campaign">Saved category.</param>
+            <returns>Response.</returns>
+        </member>
+        <member name="M:Scrutz.Service.Communication.CampaignResponse.#ctor(System.String)">
+            <summary>
+            Creates am error response.
+            </summary>
+            <param name="message">Error message.</param>
+            <returns>Response.</returns>
+        </member>
+    </members>
+</doc>

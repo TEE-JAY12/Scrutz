@@ -29,7 +29,7 @@ namespace Scrutz.Controllers
         /// <summary>
         /// Lists all campaigns.
         /// </summary>
-        /// <returns>List os campaigns.</returns>
+        /// <returns>List of campaigns.</returns>
         [HttpGet]
         [ProducesResponseType(typeof(IEnumerable<Campaign>), 200)]
         public async Task<IEnumerable<Campaign>> GetCampaigns()
@@ -43,7 +43,7 @@ namespace Scrutz.Controllers
         /// <summary>
         /// Saves a new campaign.
         /// </summary>
-        /// <param name="campaign">Category data.</param>
+        /// <param name="campaign">Campaign data.</param>
         /// <returns>Response for the request.</returns>
         [HttpPost]
         [ProducesResponseType(typeof(Campaign), 201)]
@@ -63,10 +63,10 @@ namespace Scrutz.Controllers
         }
 
         /// <summary>
-        /// Updates an existing category according to an identifier.
+        /// Updates an existing campaign according to an identifier.
         /// </summary>
-        /// <param name="id">Category identifier.</param>
-        /// <param name="campaign">Updated category data.</param>
+        /// <param name="id">Campaign identifier.</param>
+        /// <param name="campaign">Updated campaign data.</param>
         /// <returns>Response for the request.</returns>
         [HttpPut("{id}")]
         [ProducesResponseType(typeof(Campaign), 200)]
@@ -86,9 +86,9 @@ namespace Scrutz.Controllers
         }
 
         /// <summary>
-        /// Deletes a given category according to an identifier.
+        /// Deletes a given campaign according to an identifier.
         /// </summary>
-        /// <param name="id">Category identifier.</param>
+        /// <param name="id">Campaign identifier.</param>
         /// <returns>Response for the request.</returns>
         [HttpDelete("{id}")]
         [ProducesResponseType(typeof(Campaign), 200)]
@@ -106,6 +106,11 @@ namespace Scrutz.Controllers
             return Ok(campaignResource);
         }
 
+
+        /// <summary>
+        /// Get campaign details according to an identifier.
+        /// </summary>
+        /// <returns>Get campaign details </returns>
         // GET: api/Campaigns/5
         [HttpGet("{id}")]
         public async Task<IActionResult> GetCampaign(int id)
@@ -120,6 +125,11 @@ namespace Scrutz.Controllers
             var campaignResource = result.Resource;
             return Ok(campaignResource);
         }
+
+        /// <summary>
+        /// Update Active Status.
+        /// </summary>
+        /// <returns>Response for the request</returns>
 
         [HttpPut("UpdateActiveStatus/{id}")]
         [ProducesResponseType(typeof(Campaign), 200)]
