@@ -36,22 +36,34 @@ The REST API to the Scrutz app is described below.
     -H 'Authorization: Bearer Access Token'   
 
 ### Response Body
-
-   [
-  {
-    "id": 0,
-    "campaignName": "string",
-    "campaignDescription": "string",
-    "startDate": "2023-05-04T14:18:52.073Z",
-    "endDate": "2023-05-04T14:18:52.073Z",
-    "recieveDailyDigest": true,
-    "linkedKeywords": [
-      "string"
-    ],
-    "dailyDigestTime": "2023-05-04T14:18:52.073Z",
-    "campaignStatus": "Active"
-  }
-]
+    [
+        {
+            "id": 0,
+            "campaignName": "string",
+            "campaignDescription": "string",
+            "startDate": "2023-05-04T14:18:52.073Z",
+            "endDate": "2023-05-04T14:18:52.073Z",
+            "recieveDailyDigest": true,
+            "linkedKeywords": [
+            "string"
+            ],
+            "dailyDigestTime": "2023-05-04T14:18:52.073Z",
+            "campaignStatus": "Active"
+        },
+        {
+            "id": 0,
+            "campaignName": "string",
+            "campaignDescription": "string",
+            "startDate": "2023-05-04T14:18:52.073Z",
+            "endDate": "2023-05-04T14:18:52.073Z",
+            "recieveDailyDigest": true,
+            "linkedKeywords": [
+            "string"
+            ],
+            "dailyDigestTime": "2023-05-04T14:18:52.073Z",
+            "campaignStatus": "Active"
+        }
+    ]
 
 ## Create a new campaign
 
@@ -223,10 +235,10 @@ The REST API to the Scrutz app is described below.
 
 
 ### Curl
-curl -X 'PUT' \
-  'https://localhost:7135/api/Campaign/UpdateActiveStatus/4?activeStatus=Active' \
-  -H 'accept: text/plain' \
-  -H 'Authorization: Bearer eyJ0eXAiOiJKV1QiL'
+    curl -X 'PUT' \
+    'https://localhost:7135/api/Campaign/UpdateActiveStatus/4?activeStatus=Active' \
+    -H 'accept: text/plain' \
+    -H 'Authorization: Bearer eyJ0eXAiOiJKV1QiL'
 
 ### Response Body
 
