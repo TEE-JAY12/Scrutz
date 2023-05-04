@@ -205,7 +205,7 @@ The REST API to the Scrutz app is described below.
     curl -X 'DELETE' \
     'https://scrutzbackend.azurewebsites.net/api/Campaign/3' \
     -H 'accept: text/plain' \
-    -H 'Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1d
+    -H 'Authorization: Bearer Access Token'
 
 
 ### Response body
@@ -228,7 +228,8 @@ The REST API to the Scrutz app is described below.
 
 ### Request
 
-`GET /Campaign/id/`
+`GET /Campaign/UpdateActiveStatus/Id?activeStatus=Stauts`
+`Status = Active or InActive`
 
     | HTTP Verbs | Endpoints | Action |
     | UPDATE | https://scrutzbackend.azurewebsites.net/api/Campaign/4?activeStatus=Active | Update Active Status |
@@ -238,7 +239,7 @@ The REST API to the Scrutz app is described below.
     curl -X 'PUT' \
     'https://localhost:7135/api/Campaign/UpdateActiveStatus/4?activeStatus=Active' \
     -H 'accept: text/plain' \
-    -H 'Authorization: Bearer eyJ0eXAiOiJKV1QiL'
+    -H 'Authorization: Bearer AccessToken'
 
 ### Response Body
 
