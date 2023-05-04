@@ -25,16 +25,18 @@ The REST API to the Scrutz app is described below.
 ### Request
 
 `GET /Campaign/`
+
     | HTTP Verbs | Endpoints | Action |
     | GET | https://scrutzbackend.azurewebsites.net/api/Campaign | Retrieve a list of all the Campaigns |
 
 ### Curl
-   curl -X 'GET' \
-  'https://scrutzbackend.azurewebsites.net/api/Campaign' \
-  -H 'accept: text/plain' \
-  -H 'Authorization: Bearer Access Token'   
+    curl -X 'GET' \
+    'https://scrutzbackend.azurewebsites.net/api/Campaign' \
+    -H 'accept: text/plain' \
+    -H 'Authorization: Bearer Access Token'   
 
 ### Response Body
+
    [
   {
     "id": 0,
@@ -60,42 +62,43 @@ The REST API to the Scrutz app is described below.
     | HTTP Verbs | Endpoints | Action |
     | GET | https://scrutzbackend.azurewebsites.net/api/Campaign | Create a new Campaigns |
 
-### curl
-curl -X 'POST' \
-  'https://scrutzbackend.azurewebsites.net/api/Campaign' \
-  -H 'accept: text/plain' \
-  -H 'Authorization: Bearer Access Token\
-  -H 'Content-Type: application/json' \
-  -d '{
-  "campaignName": "string",
-  "campaignDescription": "string",
-  "startDate": "2023-05-04T13:42:25.070Z",
-  "endDate": "2023-05-04T13:42:25.070Z",
-  "recieveDailyDigest": true,
-  "linkedKeywords": [
-    "string",
-    "string",
-    "string"
-  ],
-  "dailyDigestTime": "2023-05-04T13:42:25.070Z"
-}    
+### Curl
+    curl -X 'POST' \
+    'https://scrutzbackend.azurewebsites.net/api/Campaign' \
+    -H 'accept: text/plain' \
+    -H 'Authorization: Bearer Access Token\
+    -H 'Content-Type: application/json' \
+    -d '{
+    "campaignName": "string",
+    "campaignDescription": "string",
+    "startDate": "2023-05-04T13:42:25.070Z",
+    "endDate": "2023-05-04T13:42:25.070Z",
+    "recieveDailyDigest": true,
+    "linkedKeywords": [
+        "string",
+        "string",
+        "string"
+    ],
+    "dailyDigestTime": "2023-05-04T13:42:25.070Z"
+    }    
 
 ### Response Body
-{
-  "id": 9,
-  "campaignName": "string",
-  "campaignDescription": "string",
-  "startDate": "2023-05-04T13:42:25.07Z",
-  "endDate": "2023-05-04T13:42:25.07Z",
-  "recieveDailyDigest": true,
-  "linkedKeywords": [
-    "string",
-    "string",
-    "string"
-  ],
-  "dailyDigestTime": "2023-05-04T13:42:25.07Z",
-  "campaignStatus": "InActive"
-}
+
+    {
+    "id": 9,
+    "campaignName": "string",
+    "campaignDescription": "string",
+    "startDate": "2023-05-04T13:42:25.07Z",
+    "endDate": "2023-05-04T13:42:25.07Z",
+    "recieveDailyDigest": true,
+    "linkedKeywords": [
+        "string",
+        "string",
+        "string"
+    ],
+    "dailyDigestTime": "2023-05-04T13:42:25.07Z",
+    "campaignStatus": "InActive"
+    }
 
 
 
@@ -110,10 +113,10 @@ curl -X 'POST' \
 
 
 ### Curl
-curl -X 'GET' \
-  'https://scrutzbackend.azurewebsites.net/api/Campaign/3' \
-  -H 'accept: */*' \
-  -H 'Authorization: Bearer Access token '
+    curl -X 'GET' \
+    'https://scrutzbackend.azurewebsites.net/api/Campaign/3' \
+    -H 'accept: */*' \
+    -H 'Authorization: Bearer Access token '
 
 ### Response Body
     {
@@ -187,15 +190,15 @@ curl -X 'GET' \
     | DELETE | https://scrutzbackend.azurewebsites.net/api/Campaign/3 | Delete a Campaign |
 
 ### Curl
-   curl -X 'DELETE' \
-  'https://scrutzbackend.azurewebsites.net/api/Campaign/3' \
-  -H 'accept: text/plain' \
-  -H 'Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1d
+    curl -X 'DELETE' \
+    'https://scrutzbackend.azurewebsites.net/api/Campaign/3' \
+    -H 'accept: text/plain' \
+    -H 'Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1d
 
 
 ### Response body
 
-        {
+    {
     "id": 9,
     "campaignName": "string",
     "campaignDescription": "string",
@@ -215,7 +218,7 @@ curl -X 'GET' \
 
 `GET /Campaign/id/`
 
-     | HTTP Verbs | Endpoints | Action |
+    | HTTP Verbs | Endpoints | Action |
     | UPDATE | https://scrutzbackend.azurewebsites.net/api/Campaign/4?activeStatus=Active | Update Active Status |
 
 
@@ -226,6 +229,7 @@ curl -X 'PUT' \
   -H 'Authorization: Bearer eyJ0eXAiOiJKV1QiL'
 
 ### Response Body
+
     {
     "id": 4,
     "campaignName": "Swift4g",
