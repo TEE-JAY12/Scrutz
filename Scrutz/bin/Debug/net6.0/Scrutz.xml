@@ -80,6 +80,18 @@
         <member name="M:Scrutz.Migrations.Edited_the_campaign_status_column.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
             <inheritdoc />
         </member>
+        <member name="T:Scrutz.Migrations.DailyDigestDatatype">
+            <inheritdoc />
+        </member>
+        <member name="M:Scrutz.Migrations.DailyDigestDatatype.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Scrutz.Migrations.DailyDigestDatatype.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Scrutz.Migrations.DailyDigestDatatype.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
         <member name="M:Scrutz.Service.Communication.CampaignResponse.#ctor(Scrutz.Model.Campaign)">
             <summary>
             Creates a success response.

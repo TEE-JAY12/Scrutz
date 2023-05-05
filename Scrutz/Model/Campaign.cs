@@ -13,7 +13,7 @@ namespace Scrutz.Model
 
         [MaxLength(100)]
         public string[]? LinkedKeywords { get; set; }
-        public DateTime? DailyDigestTime { get; set; }
+        public string? DailyDigestTime { get; set; }
 
         public ActiveStatus? CampaignStatus { get; set; }
 
