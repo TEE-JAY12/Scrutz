@@ -1,10 +1,11 @@
 ﻿using Scrutz.Model;
 using Scrutz.Repository.Interface;
 using Scrutz.Service.Communication;
+using Scrutz.Service.Interface;
 
 namespace Scrutz.Service
 {
-    public class AccountSettingService
+    public class AccountSettingService:IAccountSettingService
     {
         private readonly IAccountSettingRepo _accountSettingRepository;
         private readonly IUnitOfWork _unitOfWork;
@@ -30,7 +31,7 @@ namespace Scrutz.Service
                 return new AccountSettingResponse($"An error occurred when saving the settings: {ex.Message}");
             }
         }
-
+      
         public async Task<AccountSettingResponse> FindByIdAsync(int id)
         {
             var existingsettings = await _accountSettingRepository.FindSettingsAsync(id);
@@ -51,8 +52,13 @@ namespace Scrutz.Service
                 return new AccountSettingResponse("AccountSetting not found");
             }
             //_context.Entry(campaign).State = EntityState.Modified;
+            existingsettings.BrandName = accountSetting.BrandName;
+            existingsettings.EmailAddress = accountSetting.EmailAddress;
+            existingsettings.PhoneNumber = accountSetting.PhoneNumber;
             existingsettings.WebsiteAddress = accountSetting.WebsiteAddress;
-            existingsettings.BrandLogo = accountSetting.BrandLogo;
+            existingsettings.Colour = accountSetting.Colour;
+            
+            //existingsettings.BrandLogo = accountSetting.BrandLogo;
             
 
             try
@@ -67,7 +73,5 @@ namespace Scrutz.Service
 
 
         }
-
-
     }
 }

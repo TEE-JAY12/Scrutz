@@ -6,9 +6,9 @@ namespace Scrutz.Service.Interface
     public interface IAccountSettingService
     {
         
-        Task<AccountSetting> AddAsync(AccountSetting accountSetting);
-        Task<AccountSetting> FindByIdAsync(int id);
-        Task<AccountSetting> UpdateAsync(int id, AccountSetting accountSetting);
+        Task<AccountSettingResponse> AddAsync(AccountSetting accountSetting);
+        Task<AccountSettingResponse> FindByIdAsync(int id);
+        Task<AccountSettingResponse> UpdateAsync(int id, AccountSetting accountSetting);
 
     }
 }

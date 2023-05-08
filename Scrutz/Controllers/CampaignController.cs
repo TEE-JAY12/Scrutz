@@ -75,6 +75,7 @@ namespace Scrutz.Controllers
         {
             var category = _mapper.Map<CampaignDTO, Campaign>(campaignDTO);
             var result = await _campaignService.UpdateAsync(id, category);
+            
 
             if (!result.Success)
             {

@@ -4,6 +4,27 @@
         <name>Scrutz</name>
     </assembly>
     <members>
+        <member name="M:Scrutz.Controllers.AccountSettingController.GetCampaign(System.Int32)">
+            <summary>
+            Get account settings according to an identifier.
+            </summary>
+            <returns>Get Account Settings details </returns>
+        </member>
+        <member name="M:Scrutz.Controllers.AccountSettingController.PostAccounSettings(Scrutz.Model.DTO.AccountSettingDTO)">
+            <summary>
+            Saves a new Account Settings.
+            </summary>
+            <param name="AccountSettings">AccountSetting  data.</param>
+            <returns>Response for the request.</returns>
+        </member>
+        <member name="M:Scrutz.Controllers.AccountSettingController.EditAccountSettings(System.Int32,Scrutz.Model.DTO.AccountSettingDTO)">
+            <summary>
+            Updates an existing account settings according to an identifier.
+            </summary>
+            <param name="id">Campaign identifier.</param>
+            <param name="AccountSettings">Updated campaign data.</param>
+            <returns>Response for the request.</returns>
+        </member>
         <member name="M:Scrutz.Controllers.CampaignController.GetCampaigns">
             <summary>
             Lists all campaigns.
@@ -90,6 +111,18 @@
             <inheritdoc />
         </member>
         <member name="M:Scrutz.Migrations.DailyDigestDatatype.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:Scrutz.Migrations.Created_the_AccountTable">
+            <inheritdoc />
+        </member>
+        <member name="M:Scrutz.Migrations.Created_the_AccountTable.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Scrutz.Migrations.Created_the_AccountTable.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Scrutz.Migrations.Created_the_AccountTable.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
             <inheritdoc />
         </member>
         <member name="M:Scrutz.Service.Communication.AccountSettingResponse.#ctor(Scrutz.Model.AccountSetting)">

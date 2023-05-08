@@ -35,6 +35,9 @@ builder.Services.AddDbContext<ScrutzContext>(options => options.UseSqlServer(bui
 builder.Services.AddTransient<ICampaignRepo, CampaignRepo>();
 builder.Services.AddTransient<IUnitOfWork, UnitOfWork>();
 builder.Services.AddTransient<ICampaignService, CampaignService>();
+builder.Services.AddTransient<IAccountSettingRepo, AccountSettingRepo>();
+builder.Services.AddTransient<IAccountSettingService, AccountSettingService>();
+
 
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 

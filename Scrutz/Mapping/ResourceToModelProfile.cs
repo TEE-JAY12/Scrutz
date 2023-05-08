@@ -9,6 +9,7 @@ namespace Scrutz.Mapping
         public ResourceToModelProfile() 
         {
             CreateMap<CampaignDTO,Campaign>();
+            CreateMap<AccountSettingDTO,AccountSetting>();
         }
     }
 }
