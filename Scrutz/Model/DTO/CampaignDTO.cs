@@ -12,7 +12,7 @@ namespace Scrutz.Model.DTO
 
         [MaxLength(100)]
         public string[]? LinkedKeywords { get; set; }
-        public DateTime? DailyDigestTime { get; set; }
+        public string? DailyDigestTime { get; set; }
 
         //public bool? ActiveCampaign { get; set; }
 

@@ -92,6 +92,20 @@
         <member name="M:Scrutz.Migrations.DailyDigestDatatype.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
             <inheritdoc />
         </member>
+        <member name="M:Scrutz.Service.Communication.AccountSettingResponse.#ctor(Scrutz.Model.AccountSetting)">
+            <summary>
+            Creates a success response.
+            </summary>
+            <param name="accountSetting">Saved category.</param>
+            <returns>Response.</returns>
+        </member>
+        <member name="M:Scrutz.Service.Communication.AccountSettingResponse.#ctor(System.String)">
+            <summary>
+            Creates am error response.
+            </summary>
+            <param name="message">Error message.</param>
+            <returns>Response.</returns>
+        </member>
         <member name="M:Scrutz.Service.Communication.CampaignResponse.#ctor(Scrutz.Model.Campaign)">
             <summary>
             Creates a success response.

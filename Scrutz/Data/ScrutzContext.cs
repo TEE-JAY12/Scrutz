@@ -12,6 +12,8 @@ namespace Scrutz.Data
 
         public DbSet<Campaign> Campaigns { get; set; }
 
+        public DbSet<AccountSetting> AccountSettings { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Campaign>().HasKey(p => p.Id);
