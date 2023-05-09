@@ -4,7 +4,7 @@
         <name>Scrutz</name>
     </assembly>
     <members>
-        <member name="M:Scrutz.Controllers.AccountSettingController.GetCampaign(System.Int32)">
+        <member name="M:Scrutz.Controllers.AccountSettingController.GetAccountSettings(System.Int32)">
             <summary>
             Get account settings according to an identifier.
             </summary>
@@ -24,6 +24,20 @@
             <param name="id">Campaign identifier.</param>
             <param name="AccountSettings">Updated campaign data.</param>
             <returns>Response for the request.</returns>
+        </member>
+        <member name="M:Scrutz.Controllers.AccountSettingController.UploadImage(System.Int32,Microsoft.AspNetCore.Http.IFormFile)">
+            <summary>
+            Upload an Image.
+            </summary>
+            <param name="id">Campaign identifier.</param>
+            <param name="AccountSettings">Updated campaign data.</param>
+            <returns>Response for the request.</returns>
+        </member>
+        <member name="M:Scrutz.Controllers.AccountSettingController.GetCompanyLogo(System.Int32)">
+            <summary>
+            Get company Logo according to an identifier.
+            </summary>
+            <returns>Get company logo </returns>
         </member>
         <member name="M:Scrutz.Controllers.CampaignController.GetCampaigns">
             <summary>
@@ -123,6 +137,30 @@
             <inheritdoc />
         </member>
         <member name="M:Scrutz.Migrations.Created_the_AccountTable.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:Scrutz.Migrations.AddedImageUrl">
+            <inheritdoc />
+        </member>
+        <member name="M:Scrutz.Migrations.AddedImageUrl.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Scrutz.Migrations.AddedImageUrl.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Scrutz.Migrations.AddedImageUrl.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:Scrutz.Migrations.SetImageUrlToDefault">
+            <inheritdoc />
+        </member>
+        <member name="M:Scrutz.Migrations.SetImageUrlToDefault.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Scrutz.Migrations.SetImageUrlToDefault.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Scrutz.Migrations.SetImageUrlToDefault.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
             <inheritdoc />
         </member>
         <member name="M:Scrutz.Service.Communication.AccountSettingResponse.#ctor(Scrutz.Model.AccountSetting)">

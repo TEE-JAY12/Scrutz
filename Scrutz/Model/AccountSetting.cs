@@ -13,5 +13,7 @@
 
         public string? Colour { get; set;}
 
+        public string CompanyLogo { get; set; }
+
     }
 }

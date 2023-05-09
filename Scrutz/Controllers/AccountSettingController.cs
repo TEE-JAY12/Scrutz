@@ -32,7 +32,7 @@ namespace Scrutz.Controllers
         /// <returns>Get Account Settings details </returns>
         // GET: api/Campaigns/5
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetCampaign(int id)
+        public async Task<IActionResult> GetAccountSettings(int id)
         {
             var result = await _accountSettingService.FindByIdAsync(id);
 
@@ -93,6 +93,51 @@ namespace Scrutz.Controllers
             var SavedAccountSettings = result.Resource;
             return Ok(SavedAccountSettings);
         }
+
+        /// <summary>
+        /// Upload an Image.
+        /// </summary>
+        /// <param name="id">Campaign identifier.</param>
+        /// <param name="AccountSettings">Updated campaign data.</param>
+        /// <returns>Response for the request.</returns>
+        [HttpPut("UploadCompanyLogo/{id}")]
+        [ProducesResponseType(typeof(AccountSetting), 200)]
+        [ProducesResponseType(typeof(ErrorResource), 400)]
+        public async Task<IActionResult> UploadImage(int id, IFormFile file)
+        {
+            
+            var result = await _accountSettingService.UploadImage(id, file);
+
+
+            if (!result.Success)
+            {
+                return BadRequest(new ErrorResource(result.Message));
+            }
+
+            var SavedAccountSettings = result.Resource;
+            return Ok(SavedAccountSettings);
+        }
+
+        /// <summary>
+        /// Get company Logo according to an identifier.
+        /// </summary>
+        /// <returns>Get company logo </returns>
+        // GET: api/Campaigns/5
+        [HttpGet("RetrieveImage/{id}")]
+        public async Task<IActionResult> GetCompanyLogo(int id)
+        {
+            var base64Data = await _accountSettingService.RetrieveImage(id);
+            if (base64Data == null)
+            {
+                return NotFound();
+            }
+
+            var bytes = Convert.FromBase64String(base64Data);
+            return File(bytes, "image/png");
+        }
+
+
+
 
 
     }

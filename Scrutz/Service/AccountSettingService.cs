@@ -1,4 +1,6 @@
-﻿using Scrutz.Model;
+﻿using Azure.Core;
+using Scrutz.Model;
+using Scrutz.Model.DTO;
 using Scrutz.Repository.Interface;
 using Scrutz.Service.Communication;
 using Scrutz.Service.Interface;
@@ -71,6 +73,47 @@ namespace Scrutz.Service
                 return new AccountSettingResponse($"An error occurred when updating the AccountsettingResponse: {ex.Message}");
             }
 
+
+        }
+
+        //public async Task<AccountSettingResponse> UploadImage(int id, ImageUploadDTO imageUploadDTO)
+        public async Task<AccountSettingResponse> UploadImage(int id, IFormFile file)
+        {
+            var existingsettings = await _accountSettingRepository.FindSettingsAsync(id);
+            if (existingsettings == null)
+            {
+                return new AccountSettingResponse("AccountSetting not found");
+            }
+
+            //using var stream = imageUploadDTO.File.OpenReadStream();
+            using var stream = file.OpenReadStream();
+            using var ms = new MemoryStream();
+            await stream.CopyToAsync(ms);
+            var bytes = ms.ToArray();
+            existingsettings.CompanyLogo = Convert.ToBase64String(bytes);
+
+            try
+            {
+                await _unitOfWork.CompleteAsync();
+                return new AccountSettingResponse(existingsettings);
+            }
+            catch (Exception ex)
+            {
+                return new AccountSettingResponse($"An error occurred when uploading the image: {ex.Message}");
+            }
+
+        }
+
+        public async Task<String> RetrieveImage(int id)
+        {
+            var existingsettings = await _accountSettingRepository.FindSettingsAsync(id);
+           
+            if (existingsettings.CompanyLogo == null)
+            {
+                return null;
+            }
+
+            return existingsettings.CompanyLogo;
 
         }
     }
