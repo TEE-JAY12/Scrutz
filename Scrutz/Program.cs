@@ -107,16 +107,24 @@ var app = builder.Build();
 IdentityModelEventSource.ShowPII = true;
 
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
+//if (app.Environment.IsDevelopment())
+//{
+//    app.UseSwagger();
+//    app.UseSwaggerUI(c=>
+//    {
+//        c.OAuthClientId(builder.Configuration["SwaggerAzureAd:ClientId"]);
+//        c.OAuthUsePkce();
+//        c.OAuthScopeSeparator("");
+//    });
+//}
+
+app.UseSwagger();
+app.UseSwaggerUI(c =>
 {
-    app.UseSwagger();
-    app.UseSwaggerUI(c=>
-    {
-        c.OAuthClientId(builder.Configuration["SwaggerAzureAd:ClientId"]);
-        c.OAuthUsePkce();
-        c.OAuthScopeSeparator("");
-    });
-}
+    c.OAuthClientId(builder.Configuration["SwaggerAzureAd:ClientId"]);
+    c.OAuthUsePkce();
+    c.OAuthScopeSeparator("");
+});
 
 app.UseHttpsRedirection();
 
