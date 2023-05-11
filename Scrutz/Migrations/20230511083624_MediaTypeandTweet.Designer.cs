@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Scrutz.Data;
 
@@ -11,9 +12,11 @@ using Scrutz.Data;
 namespace Scrutz.Migrations
 {
     [DbContext(typeof(ScrutzContext))]
-    partial class ScrutzContextModelSnapshot : ModelSnapshot
+    [Migration("20230511083624_MediaTypeandTweet")]
+    partial class MediaTypeandTweet
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -111,100 +114,6 @@ namespace Scrutz.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("MediaType");
-                });
-
-            modelBuilder.Entity("Scrutz.Model.Tweet", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<int?>("CampaignId")
-                        .IsRequired()
-                        .HasColumnType("int");
-
-                    b.Property<DateTime?>("Date")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int?>("FollowersCount")
-                        .HasColumnType("int");
-
-                    b.Property<string>("ImageUrl")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("KeyPhrase")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("Likes")
-                        .HasColumnType("int");
-
-                    b.Property<string>("RetweetCount")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("ScreenName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Sentiments")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("TweetId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("TweetedFrom")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Tweets")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("UserDescription")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("UserId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("UserLocation")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("UserName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("UserVerified")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CampaignId");
-
-                    b.ToTable("Tweets");
-                });
-
-            modelBuilder.Entity("Scrutz.Model.Tweet", b =>
-                {
-                    b.HasOne("Scrutz.Model.Campaign", "Campaign")
-                        .WithMany("Tweets")
-                        .HasForeignKey("CampaignId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Campaign");
-                });
-
-            modelBuilder.Entity("Scrutz.Model.Campaign", b =>
-                {
-                    b.Navigation("Tweets");
                 });
 #pragma warning restore 612, 618
         }

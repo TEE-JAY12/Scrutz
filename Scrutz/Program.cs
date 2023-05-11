@@ -37,6 +37,9 @@ builder.Services.AddTransient<IUnitOfWork, UnitOfWork>();
 builder.Services.AddTransient<ICampaignService, CampaignService>();
 builder.Services.AddTransient<IAccountSettingRepo, AccountSettingRepo>();
 builder.Services.AddTransient<IAccountSettingService, AccountSettingService>();
+builder.Services.AddTransient<ITweetRepo, TweetRepo>();
+builder.Services.AddTransient<ITweetService, TweetService>();
+
 
 
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
@@ -51,7 +54,7 @@ builder.Services.AddSwaggerGen(
     {   c.SwaggerDoc("v1", new OpenApiInfo
     {
         Version = "v1",
-        Title = "ToDo API",
+        Title = "Scrutz API",
         Description = "An ASP.NET Core Web API for managing the Scrutz project",
         TermsOfService = new Uri("https://example.com/terms"),
         Contact = new OpenApiContact

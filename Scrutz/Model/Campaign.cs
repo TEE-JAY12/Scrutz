@@ -17,5 +17,7 @@ namespace Scrutz.Model
 
         public ActiveStatus? CampaignStatus { get; set; }
 
+        public ICollection<Tweet> Tweets { get; set; }
+
     }
 }
