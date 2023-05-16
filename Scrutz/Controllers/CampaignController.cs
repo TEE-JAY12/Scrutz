@@ -58,8 +58,10 @@ namespace Scrutz.Controllers
                 return BadRequest(new ErrorResource(result.Message));
             }
 
+            //var campaignResource = result.Resource;
+            //return Ok(campaignResource);
             var campaignResource = result.Resource;
-            return Ok(campaignResource);
+            return CreatedAtAction(nameof(GetCampaign), new { id = campaignResource.Id }, campaignResource);
         }
 
         /// <summary>

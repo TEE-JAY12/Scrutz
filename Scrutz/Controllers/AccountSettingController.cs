@@ -67,7 +67,7 @@ namespace Scrutz.Controllers
             }
 
             var SavedAccountSettings = result.Resource;
-            return Ok(SavedAccountSettings);
+            return CreatedAtAction(nameof(GetAccountSettings), new { id = SavedAccountSettings.Id }, SavedAccountSettings);
         }
 
         /// <summary>
