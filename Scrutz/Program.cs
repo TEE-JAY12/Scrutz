@@ -39,6 +39,9 @@ builder.Services.AddTransient<IAccountSettingRepo, AccountSettingRepo>();
 builder.Services.AddTransient<IAccountSettingService, AccountSettingService>();
 builder.Services.AddTransient<ITweetRepo, TweetRepo>();
 builder.Services.AddTransient<ITweetService, TweetService>();
+builder.Services.AddTransient<IInfluencerRepo, InfluencerRepo>();
+builder.Services.AddTransient<IInfluencerService, InfluencerService>();
+
 
 
 

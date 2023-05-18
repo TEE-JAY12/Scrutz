@@ -19,5 +19,7 @@ namespace Scrutz.Model
 
         public ICollection<Tweet> Tweets { get; set; }
 
+        public ICollection<Influencer> Influencers { get; set; }
+
     }
 }
