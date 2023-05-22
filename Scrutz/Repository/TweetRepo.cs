@@ -11,9 +11,9 @@ namespace Scrutz.Repository
         {
         }
 
-        public async Task<IEnumerable<Tweet>> FindByCampaignIdAsync(int campaignId)
+        public async Task<IEnumerable<Tweets>> FindByCampaignIdAsync(int campaignId)
         {
-            return _context.Tweets.Where(tweet => tweet.CampaignId == campaignId).ToList();
+            return _context.Tweet.Where(tweet => tweet.CampaignId == campaignId).ToList();
         }
 
     }

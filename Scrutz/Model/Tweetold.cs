@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Scrutz.Model
 {
-    public class Tweet
+    public class Tweetold
     {
         [Key] // Specify the primary key attribute
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]

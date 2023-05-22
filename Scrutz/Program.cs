@@ -83,7 +83,7 @@ builder.Services.AddSwaggerGen(
                      TokenUrl = new Uri(builder.Configuration["SwaggerAzureAD:TokenUrl"]),
                      Scopes = new Dictionary<string, string>
                      {
-                         {builder.Configuration["SwaggerAzureAd:Scope"],"Access API as User"}
+                         {builder.Configuration["SwaggerAzureAd:Scope"],"Access API as Users"}
                      }
                  }
              }

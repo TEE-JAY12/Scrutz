@@ -2,14 +2,14 @@
 
 namespace Scrutz.Service.Communication
 {
-    public class TweetResponse: BaseResponse<Tweet>
+    public class TweetResponse: BaseResponse<Tweetold>
     {
         /// <summary>
         /// Creates a success response.
         /// </summary>
         /// <param name="tweet">Saved category.</param>
         /// <returns>Response.</returns>
-        public TweetResponse(Tweet tweet) : base(tweet)
+        public TweetResponse(Tweetold tweet) : base(tweet)
         { }
 
         /// <summary>

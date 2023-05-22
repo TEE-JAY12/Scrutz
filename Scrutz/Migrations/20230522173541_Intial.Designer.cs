@@ -12,8 +12,8 @@ using Scrutz.Data;
 namespace Scrutz.Migrations
 {
     [DbContext(typeof(ScrutzContext))]
-    [Migration("20230511155350_UpdateTweetAndCampaignTable")]
-    partial class UpdateTweetAndCampaignTable
+    [Migration("20230522173541_Intial")]
+    partial class Intial
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -100,6 +100,47 @@ namespace Scrutz.Migrations
                     b.ToTable("Campaigns");
                 });
 
+            modelBuilder.Entity("Scrutz.Model.Influencer", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int?>("CampaignId")
+                        .IsRequired()
+                        .HasColumnType("int");
+
+                    b.Property<string>("EmailAddress")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FacebookHanlde")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("InstagramHandle")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LinkedKeywords")
+                        .HasMaxLength(300)
+                        .HasColumnType("nvarchar(300)");
+
+                    b.Property<string>("NameOfInfluencer")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Role")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("TwitterHandle")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CampaignId");
+
+                    b.ToTable("Influencers");
+                });
+
             modelBuilder.Entity("Scrutz.Model.MediaType", b =>
                 {
                     b.Property<int>("Id")
@@ -116,7 +157,7 @@ namespace Scrutz.Migrations
                     b.ToTable("MediaType");
                 });
 
-            modelBuilder.Entity("Scrutz.Model.Tweet", b =>
+            modelBuilder.Entity("Scrutz.Model.TweetMetric", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -124,80 +165,127 @@ namespace Scrutz.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<int>("ImpressionCount")
+                        .HasColumnType("int");
+
+                    b.Property<int>("LikeCount")
+                        .HasColumnType("int");
+
+                    b.Property<int>("QuoteCount")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ReplyCount")
+                        .HasColumnType("int");
+
+                    b.Property<int>("RetweetCount")
+                        .HasColumnType("int");
+
+                    b.Property<string>("TweetID")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("TweetID")
+                        .IsUnique()
+                        .HasFilter("[TweetID] IS NOT NULL");
+
+                    b.ToTable("TweetMetrics");
+                });
+
+            modelBuilder.Entity("Scrutz.Model.Tweets", b =>
+                {
+                    b.Property<string>("TweetID")
+                        .HasColumnType("nvarchar(450)");
+
                     b.Property<int?>("CampaignId")
                         .IsRequired()
                         .HasColumnType("int");
 
-                    b.Property<DateTime?>("Date")
+                    b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
 
-                    b.Property<int?>("FollowersCount")
-                        .HasColumnType("int");
-
-                    b.Property<string>("ImageUrl")
+                    b.Property<string>("Lang")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(5)
+                        .HasColumnType("nvarchar(5)");
 
-                    b.Property<string>("KeyPhrase")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("Likes")
-                        .HasColumnType("int");
-
-                    b.Property<string>("RetweetCount")
+                    b.Property<string>("Sentiment")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(10)
+                        .HasColumnType("nvarchar(10)");
 
-                    b.Property<string>("ScreenName")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<decimal>("SentimentScore")
+                        .HasColumnType("decimal(18,2)");
 
-                    b.Property<string>("Sentiments")
+                    b.Property<string>("Text")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(300)
+                        .HasColumnType("nvarchar(300)");
 
-                    b.Property<string>("TweetId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<string>("UserID")
+                        .HasColumnType("nvarchar(450)");
 
-                    b.Property<string>("TweetedFrom")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Tweets")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("UserDescription")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("UserId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("UserLocation")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("UserName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("UserVerified")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
+                    b.HasKey("TweetID");
 
                     b.HasIndex("CampaignId");
 
-                    b.ToTable("Tweets");
+                    b.HasIndex("UserID");
+
+                    b.ToTable("Tweet");
                 });
 
-            modelBuilder.Entity("Scrutz.Model.Tweet", b =>
+            modelBuilder.Entity("Scrutz.Model.Users", b =>
+                {
+                    b.Property<string>("UserID")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<DateTime>("CreateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
+
+                    b.Property<int>("FollowersCount")
+                        .HasColumnType("int");
+
+                    b.Property<int>("FollowingCount")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Image_URL")
+                        .IsRequired()
+                        .HasMaxLength(150)
+                        .HasColumnType("nvarchar(150)");
+
+                    b.Property<bool>("IsVerified")
+                        .HasColumnType("bit");
+
+                    b.Property<int>("ListedCount")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(30)
+                        .HasColumnType("nvarchar(30)");
+
+                    b.Property<int>("TweetCount")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Username")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.HasKey("UserID");
+
+                    b.ToTable("Users");
+                });
+
+            modelBuilder.Entity("Scrutz.Model.Influencer", b =>
                 {
                     b.HasOne("Scrutz.Model.Campaign", "Campaign")
-                        .WithMany("Tweets")
+                        .WithMany("Influencers")
                         .HasForeignKey("CampaignId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -205,7 +293,44 @@ namespace Scrutz.Migrations
                     b.Navigation("Campaign");
                 });
 
+            modelBuilder.Entity("Scrutz.Model.TweetMetric", b =>
+                {
+                    b.HasOne("Scrutz.Model.Tweets", null)
+                        .WithOne()
+                        .HasForeignKey("Scrutz.Model.TweetMetric", "TweetID");
+                });
+
+            modelBuilder.Entity("Scrutz.Model.Tweets", b =>
+                {
+                    b.HasOne("Scrutz.Model.Campaign", "Campaign")
+                        .WithMany("Tweets")
+                        .HasForeignKey("CampaignId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Scrutz.Model.Users", null)
+                        .WithOne()
+                        .HasForeignKey("Scrutz.Model.Tweets", "TweetID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Scrutz.Model.Users", "Users")
+                        .WithMany("Tweets")
+                        .HasForeignKey("UserID");
+
+                    b.Navigation("Campaign");
+
+                    b.Navigation("Users");
+                });
+
             modelBuilder.Entity("Scrutz.Model.Campaign", b =>
+                {
+                    b.Navigation("Influencers");
+
+                    b.Navigation("Tweets");
+                });
+
+            modelBuilder.Entity("Scrutz.Model.Users", b =>
                 {
                     b.Navigation("Tweets");
                 });

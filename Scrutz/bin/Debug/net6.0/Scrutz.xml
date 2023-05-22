@@ -115,128 +115,32 @@
         </member>
         <member name="M:Scrutz.Controllers.TweetController.GetTweetsById(System.Int32)">
             <summary>
-            Lists all Tweet Identifed with a campaign Id.
+            Lists all Tweetold Identifed with a campaign Id.
             </summary>
             <returns>List of campaigns.</returns>
         </member>
-        <member name="T:Scrutz.Migrations.Inital">
+        <member name="T:Scrutz.Migrations.Intial">
             <inheritdoc />
         </member>
-        <member name="M:Scrutz.Migrations.Inital.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+        <member name="M:Scrutz.Migrations.Intial.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
             <inheritdoc />
         </member>
-        <member name="M:Scrutz.Migrations.Inital.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+        <member name="M:Scrutz.Migrations.Intial.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
             <inheritdoc />
         </member>
-        <member name="M:Scrutz.Migrations.Inital.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+        <member name="M:Scrutz.Migrations.Intial.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
             <inheritdoc />
         </member>
-        <member name="T:Scrutz.Migrations.added_campaign_status">
+        <member name="T:Scrutz.Migrations.Intial2">
             <inheritdoc />
         </member>
-        <member name="M:Scrutz.Migrations.added_campaign_status.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+        <member name="M:Scrutz.Migrations.Intial2.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
             <inheritdoc />
         </member>
-        <member name="M:Scrutz.Migrations.added_campaign_status.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+        <member name="M:Scrutz.Migrations.Intial2.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
             <inheritdoc />
         </member>
-        <member name="M:Scrutz.Migrations.added_campaign_status.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
-            <inheritdoc />
-        </member>
-        <member name="T:Scrutz.Migrations.Edited_the_campaign_status_column">
-            <inheritdoc />
-        </member>
-        <member name="M:Scrutz.Migrations.Edited_the_campaign_status_column.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
-            <inheritdoc />
-        </member>
-        <member name="M:Scrutz.Migrations.Edited_the_campaign_status_column.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
-            <inheritdoc />
-        </member>
-        <member name="M:Scrutz.Migrations.Edited_the_campaign_status_column.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
-            <inheritdoc />
-        </member>
-        <member name="T:Scrutz.Migrations.DailyDigestDatatype">
-            <inheritdoc />
-        </member>
-        <member name="M:Scrutz.Migrations.DailyDigestDatatype.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
-            <inheritdoc />
-        </member>
-        <member name="M:Scrutz.Migrations.DailyDigestDatatype.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
-            <inheritdoc />
-        </member>
-        <member name="M:Scrutz.Migrations.DailyDigestDatatype.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
-            <inheritdoc />
-        </member>
-        <member name="T:Scrutz.Migrations.Created_the_AccountTable">
-            <inheritdoc />
-        </member>
-        <member name="M:Scrutz.Migrations.Created_the_AccountTable.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
-            <inheritdoc />
-        </member>
-        <member name="M:Scrutz.Migrations.Created_the_AccountTable.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
-            <inheritdoc />
-        </member>
-        <member name="M:Scrutz.Migrations.Created_the_AccountTable.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
-            <inheritdoc />
-        </member>
-        <member name="T:Scrutz.Migrations.AddedImageUrl">
-            <inheritdoc />
-        </member>
-        <member name="M:Scrutz.Migrations.AddedImageUrl.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
-            <inheritdoc />
-        </member>
-        <member name="M:Scrutz.Migrations.AddedImageUrl.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
-            <inheritdoc />
-        </member>
-        <member name="M:Scrutz.Migrations.AddedImageUrl.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
-            <inheritdoc />
-        </member>
-        <member name="T:Scrutz.Migrations.SetImageUrlToDefault">
-            <inheritdoc />
-        </member>
-        <member name="M:Scrutz.Migrations.SetImageUrlToDefault.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
-            <inheritdoc />
-        </member>
-        <member name="M:Scrutz.Migrations.SetImageUrlToDefault.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
-            <inheritdoc />
-        </member>
-        <member name="M:Scrutz.Migrations.SetImageUrlToDefault.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
-            <inheritdoc />
-        </member>
-        <member name="T:Scrutz.Migrations.MediaTypeandTweet">
-            <inheritdoc />
-        </member>
-        <member name="M:Scrutz.Migrations.MediaTypeandTweet.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
-            <inheritdoc />
-        </member>
-        <member name="M:Scrutz.Migrations.MediaTypeandTweet.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
-            <inheritdoc />
-        </member>
-        <member name="M:Scrutz.Migrations.MediaTypeandTweet.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
-            <inheritdoc />
-        </member>
-        <member name="T:Scrutz.Migrations.UpdateTweetAndCampaignTable">
-            <inheritdoc />
-        </member>
-        <member name="M:Scrutz.Migrations.UpdateTweetAndCampaignTable.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
-            <inheritdoc />
-        </member>
-        <member name="M:Scrutz.Migrations.UpdateTweetAndCampaignTable.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
-            <inheritdoc />
-        </member>
-        <member name="M:Scrutz.Migrations.UpdateTweetAndCampaignTable.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
-            <inheritdoc />
-        </member>
-        <member name="T:Scrutz.Migrations.AddedTheInflunencersTable">
-            <inheritdoc />
-        </member>
-        <member name="M:Scrutz.Migrations.AddedTheInflunencersTable.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
-            <inheritdoc />
-        </member>
-        <member name="M:Scrutz.Migrations.AddedTheInflunencersTable.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
-            <inheritdoc />
-        </member>
-        <member name="M:Scrutz.Migrations.AddedTheInflunencersTable.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+        <member name="M:Scrutz.Migrations.Intial2.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
             <inheritdoc />
         </member>
         <member name="M:Scrutz.Service.Communication.AccountSettingResponse.#ctor(Scrutz.Model.AccountSetting)">
@@ -281,7 +185,7 @@
             <param name="message">Error message.</param>
             <returns>Response.</returns>
         </member>
-        <member name="M:Scrutz.Service.Communication.TweetResponse.#ctor(Scrutz.Model.Tweet)">
+        <member name="M:Scrutz.Service.Communication.TweetResponse.#ctor(Scrutz.Model.Tweetold)">
             <summary>
             Creates a success response.
             </summary>

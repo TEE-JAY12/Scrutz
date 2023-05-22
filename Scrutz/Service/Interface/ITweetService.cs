@@ -5,6 +5,6 @@ namespace Scrutz.Service.Interface
 {
     public interface ITweetService
     {
-        Task<IEnumerable<Tweet>> FindByCampaignIdAsync(int id);
+        Task<IEnumerable<Tweets>> FindByCampaignIdAsync(int id);
     }
 }

@@ -16,7 +16,7 @@ namespace Scrutz.Service
             _unitOfWork = unitOfWork;
         }
 
-        public async Task<IEnumerable<Tweet>> FindByCampaignIdAsync(int id)
+        public async Task<IEnumerable<Tweets>> FindByCampaignIdAsync(int id)
         {
             var tweet = await _tweetRepository.FindByCampaignIdAsync(id);
 

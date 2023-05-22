@@ -19,12 +19,12 @@ namespace Scrutz.Controllers
 
 
         /// <summary>
-        /// Lists all Tweet Identifed with a campaign Id.
+        /// Lists all Tweetold Identifed with a campaign Id.
         /// </summary>
         /// <returns>List of campaigns.</returns>
         [HttpGet("{id}")]
-        [ProducesResponseType(typeof(IEnumerable<Tweet>), 200)]
-        public async Task<IEnumerable<Tweet>> GetTweetsById(int id)
+        [ProducesResponseType(typeof(IEnumerable<Tweets>), 200)]
+        public async Task<IEnumerable<Tweets>> GetTweetsById(int id)
         {
             var tweets = await _tweetService.FindByCampaignIdAsync(id);
 
