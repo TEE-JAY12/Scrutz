@@ -41,6 +41,8 @@ builder.Services.AddTransient<ITweetRepo, TweetRepo>();
 builder.Services.AddTransient<ITweetService, TweetService>();
 builder.Services.AddTransient<IInfluencerRepo, InfluencerRepo>();
 builder.Services.AddTransient<IInfluencerService, InfluencerService>();
+builder.Services.AddTransient<IUserRepo,UserRepo>();
+builder.Services.AddTransient<ITweetMetricRepo, TweetMetricRepo>();
 
 
 

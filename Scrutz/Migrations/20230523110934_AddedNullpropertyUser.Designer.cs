@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Scrutz.Data;
 
@@ -11,9 +12,11 @@ using Scrutz.Data;
 namespace Scrutz.Migrations
 {
     [DbContext(typeof(ScrutzContext))]
-    partial class ScrutzContextModelSnapshot : ModelSnapshot
+    [Migration("20230523110934_AddedNullpropertyUser")]
+    partial class AddedNullpropertyUser
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -74,7 +77,7 @@ namespace Scrutz.Migrations
                         .ValueGeneratedOnAdd()
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)")
-                        .HasDefaultValue("Active");
+                        .HasDefaultValue("InActive");
 
                     b.Property<string>("DailyDigestTime")
                         .HasColumnType("nvarchar(max)");
@@ -156,35 +159,35 @@ namespace Scrutz.Migrations
 
             modelBuilder.Entity("Scrutz.Model.TweetMetric", b =>
                 {
-                    b.Property<int?>("Id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int?>("Id"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int?>("ImpressionCount")
+                    b.Property<int>("ImpressionCount")
                         .HasColumnType("int");
 
-                    b.Property<int?>("LikeCount")
+                    b.Property<int>("LikeCount")
                         .HasColumnType("int");
 
-                    b.Property<int?>("QuoteCount")
+                    b.Property<int>("QuoteCount")
                         .HasColumnType("int");
 
-                    b.Property<int?>("ReplyCount")
+                    b.Property<int>("ReplyCount")
                         .HasColumnType("int");
 
-                    b.Property<int?>("RetweetCount")
+                    b.Property<int>("RetweetCount")
                         .HasColumnType("int");
 
                     b.Property<string>("TweetID")
-                        .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
 
                     b.HasIndex("TweetID")
-                        .IsUnique();
+                        .IsUnique()
+                        .HasFilter("[TweetID] IS NOT NULL");
 
                     b.ToTable("TweetMetrics");
                 });
@@ -198,20 +201,28 @@ namespace Scrutz.Migrations
                         .IsRequired()
                         .HasColumnType("int");
 
-                    b.Property<DateTime?>("CreatedAt")
+                    b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Lang")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasMaxLength(5)
+                        .HasColumnType("nvarchar(5)");
 
                     b.Property<string>("Sentiment")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasMaxLength(10)
+                        .HasColumnType("nvarchar(10)");
+
+                    b.Property<decimal>("SentimentScore")
+                        .HasColumnType("decimal(18,2)");
 
                     b.Property<string>("Text")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasMaxLength(300)
+                        .HasColumnType("nvarchar(300)");
 
                     b.Property<string>("UserID")
-                        .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
                     b.HasKey("TweetID");
@@ -228,11 +239,12 @@ namespace Scrutz.Migrations
                     b.Property<string>("UserID")
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<DateTime?>("CreateDate")
+                    b.Property<DateTime>("CreateDate")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Description")
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
 
                     b.Property<int?>("FollowersCount")
                         .HasColumnType("int");
@@ -241,7 +253,8 @@ namespace Scrutz.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Image_URL")
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(150)
+                        .HasColumnType("nvarchar(150)");
 
                     b.Property<bool?>("IsVerified")
                         .HasColumnType("bit");
@@ -250,13 +263,15 @@ namespace Scrutz.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(30)
+                        .HasColumnType("nvarchar(30)");
 
                     b.Property<int?>("TweetCount")
                         .HasColumnType("int");
 
                     b.Property<string>("Username")
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.HasKey("UserID");
 
@@ -278,9 +293,7 @@ namespace Scrutz.Migrations
                 {
                     b.HasOne("Scrutz.Model.Tweets", null)
                         .WithOne()
-                        .HasForeignKey("Scrutz.Model.TweetMetric", "TweetID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("Scrutz.Model.TweetMetric", "TweetID");
                 });
 
             modelBuilder.Entity("Scrutz.Model.Tweets", b =>
@@ -293,9 +306,7 @@ namespace Scrutz.Migrations
 
                     b.HasOne("Scrutz.Model.Users", "Users")
                         .WithMany("Tweets")
-                        .HasForeignKey("UserID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("UserID");
 
                     b.Navigation("Campaign");
 
