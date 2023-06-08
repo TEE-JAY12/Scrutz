@@ -9,5 +9,9 @@ namespace Scrutz.Service.Interface
         Task<IEnumerable<Tweets>> FindByCampaignIdAsync(int id);
 
         Task<ArrayList> FindByCampaignIdAsyncs(int id);
+
+        Task<PagedList<Tweets>> PagedListAsync(PageQuery pageQuery, int campaignId);
+
+        Task<PagedList<Tweets>> PagedListAsync();
     }
 }

@@ -156,11 +156,8 @@ namespace Scrutz.Migrations
 
             modelBuilder.Entity("Scrutz.Model.TweetMetric", b =>
                 {
-                    b.Property<int?>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int?>("Id"));
+                    b.Property<string>("TweetID")
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<int?>("ImpressionCount")
                         .HasColumnType("int");
@@ -177,14 +174,7 @@ namespace Scrutz.Migrations
                     b.Property<int?>("RetweetCount")
                         .HasColumnType("int");
 
-                    b.Property<string>("TweetID")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("TweetID")
-                        .IsUnique();
+                    b.HasKey("TweetID");
 
                     b.ToTable("TweetMetrics");
                 });
@@ -276,11 +266,13 @@ namespace Scrutz.Migrations
 
             modelBuilder.Entity("Scrutz.Model.TweetMetric", b =>
                 {
-                    b.HasOne("Scrutz.Model.Tweets", null)
-                        .WithOne()
+                    b.HasOne("Scrutz.Model.Tweets", "Tweets")
+                        .WithOne("TweetMetric")
                         .HasForeignKey("Scrutz.Model.TweetMetric", "TweetID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("Tweets");
                 });
 
             modelBuilder.Entity("Scrutz.Model.Tweets", b =>
@@ -307,6 +299,12 @@ namespace Scrutz.Migrations
                     b.Navigation("Influencers");
 
                     b.Navigation("Tweets");
+                });
+
+            modelBuilder.Entity("Scrutz.Model.Tweets", b =>
+                {
+                    b.Navigation("TweetMetric")
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("Scrutz.Model.Users", b =>

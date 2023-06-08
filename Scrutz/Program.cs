@@ -6,6 +6,7 @@ using Microsoft.Identity.Web;
 using Microsoft.IdentityModel.Logging;
 using Microsoft.OpenApi.Models;
 using Scrutz.Data;
+using Scrutz.Model;
 using Scrutz.Repository;
 using Scrutz.Repository.Interface;
 using Scrutz.Service;
@@ -22,6 +23,8 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddMicrosoftIdentityWebApi(builder.Configuration.GetSection("AzureAd"));
+
+builder.Services.AddHostedService<CampaignStatusUpdateService>();
 
 //builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
 //        .AddMicrosoftIdentityWebApi(options =>
@@ -108,6 +111,9 @@ builder.Services.AddSwaggerGen(
         c.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, xmlFilename));
     }
     );
+
+    builder.Services.AddControllers().AddJsonOptions(x =>
+                x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
 
 
 var app = builder.Build();

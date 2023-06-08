@@ -19,13 +19,44 @@ namespace Scrutz.Repository
         public async Task<Campaign> FindAsync(int id)
         {
             return await _context.Campaigns.FindAsync(id);
-            
+
         }
+        //public async Task<Campaign> FindAsync(int id)
+        //{
+        //    return await _context.Campaigns
+        //        .Include(campaign => campaign.Tweets) // Include the Tweets navigation property
+        //        .FirstOrDefaultAsync(campaign => campaign.Id == id);
+        //}
+
+        //public async Task<Campaign> FindAsync(int id)
+        //{
+        //    return await _context.Campaigns
+        //        .Include(campaign => campaign.Tweets) // Include the Tweets navigation property
+        //            .ThenInclude(tweet => tweet.TweetMetric) // Include the Metrics navigation property of Tweets
+        //        .Include(campaign => campaign.Tweets) // Include the Tweets navigation property again
+        //            .ThenInclude(tweet => tweet.Users) // Include the User navigation property of Tweets
+        //        .FirstOrDefaultAsync(campaign => campaign.Id == id);
+        //}
+
+        //public async Task<IEnumerable<Campaign>> ListAsync()
+        //{
+        //    return await _context.Campaigns.ToListAsync();
+        //}
 
         public async Task<IEnumerable<Campaign>> ListAsync()
         {
             return await _context.Campaigns.ToListAsync();
         }
+        public async Task<PagedList<Campaign>> PagedListAsync(PageQuery pageQuery)
+        {
+            var query = _context.Campaigns.AsQueryable();
+            int PageSize = 10;
+
+            var pagedList = await Task.FromResult(PagedList<Campaign>.ToPagedList(query, pageQuery.pageNumber, PageSize));
+
+            return pagedList;
+        }
+
 
         public void Remove(Campaign campaign)
         {

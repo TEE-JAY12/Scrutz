@@ -70,22 +70,22 @@ namespace Scrutz.Data
                               .HasForeignKey(t => t.CampaignId);
 
             modelBuilder.Entity<Tweets>().HasKey(p => p.TweetID);
-            modelBuilder.Entity<TweetMetric>().HasKey(p => p.Id);
-            modelBuilder.Entity<TweetMetric>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
+            modelBuilder.Entity<TweetMetric>().HasKey(p => p.TweetID);
+         //   modelBuilder.Entity<TweetMetric>().Property(p => p.TweetID).IsRequired().ValueGeneratedOnAdd();
 
             modelBuilder.Entity<Users>().HasKey(p =>p.UserID);
 
 
 
+            modelBuilder.Entity<Tweets>()
+                  .HasOne(m => m.TweetMetric).WithOne(b => b.Tweets)
+
+                  .HasForeignKey<TweetMetric>(e => e.TweetID);
+
             //modelBuilder.Entity<TweetMetric>()
-            //      .HasOne(m => m.Tweets).WithOne(b => b.TweetMetric)
-
-            //      .HasForeignKey<Tweets>(e => e.TweetID);
-
-            modelBuilder.Entity<TweetMetric>()
-                            .HasOne<Tweets>()
-                            .WithOne()
-                            .HasForeignKey<TweetMetric>(t => t.TweetID);
+            //                .HasOne<Tweets>()
+            //                .WithOne()
+            //                .HasForeignKey<TweetMetric>(t => t.TweetID);
 
 
         }

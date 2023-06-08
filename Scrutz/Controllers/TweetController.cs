@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using Scrutz.Model;
 using Scrutz.Service;
 using Scrutz.Service.Interface;
@@ -47,6 +48,67 @@ namespace Scrutz.Controllers
 
             return tweets;
         }
+
+        /// <summary>
+        /// Lists all tweets by campaignId Paged.
+        /// </summary>
+        /// <returns>List of Tweets.</returns>
+        [HttpGet("PagedTweetsByCampaignId")]
+        [ProducesResponseType(typeof(PagedList<Campaign>), 200)]
+        public async Task<PagedList<Tweets>> GetCampaigns([FromQuery] PageQuery pageQuery , int id)
+        {
+            PagedList<Tweets> campaigns;
+
+            if (id > 0)
+            {
+                //campaigns = await _tweetService.PagedListAsync();
+                campaigns = await _tweetService.PagedListAsync(pageQuery, id);
+            }
+            else
+            {
+                campaigns = await _tweetService.PagedListAsync();
+                //campaigns = await _tweetService.PagedListAsync(pageQuery, id);
+            }
+            var metadata = new
+            {
+                campaigns.TotalCount,
+                campaigns.PageSize,
+                campaigns.CurrentPage,
+                campaigns.TotalPages,
+                campaigns.HasNext,
+                campaigns.HasPrevious
+            };
+            Response.Headers.Add("X-Pagination", JsonConvert.SerializeObject(metadata));
+
+
+            return campaigns;
+        }
+
+
+        ///// <summary>
+        ///// Lists all Tweets Paged.
+        ///// </summary>
+        ///// <returns>List of campaigns.</returns>
+        //[HttpGet("PagedTweets")]
+        //[ProducesResponseType(typeof(PagedList<Tweets>), 200)]
+        //public async Task<PagedList<Tweets>> GetCampaigns()
+        //{
+        //    var campaigns = await _tweetService.PagedListAsync();
+
+        //    var metadata = new
+        //    {
+        //        campaigns.TotalCount,
+        //        campaigns.PageSize,
+        //        campaigns.CurrentPage,
+        //        campaigns.TotalPages,
+        //        campaigns.HasNext,
+        //        campaigns.HasPrevious
+        //    };
+        //    Response.Headers.Add("X-Pagination", JsonConvert.SerializeObject(metadata));
+
+
+        //    return campaigns;
+        //}
 
 
     }

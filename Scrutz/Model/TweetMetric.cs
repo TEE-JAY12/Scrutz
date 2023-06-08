@@ -3,10 +3,10 @@
     public class TweetMetric
     {
         
-        public int? Id { get; set; }
+        //public int? Id { get; set; }
 
         public string TweetID { get; set; }
-        //public Tweets Tweets { get; set; }
+        public Tweets Tweets { get; set; }
 
         public int? ImpressionCount { get; set; }
         public int? LikeCount { get; set; }

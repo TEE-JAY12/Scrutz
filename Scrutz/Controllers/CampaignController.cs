@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Identity.Web.Resource;
+using Newtonsoft.Json;
 using Scrutz.Model;
 using Scrutz.Model.DTO;
 using Scrutz.Resource;
@@ -27,7 +28,32 @@ namespace Scrutz.Controllers
         }
 
         /// <summary>
-        /// Lists all campaigns.
+        /// Lists all campaigns Paged.
+        /// </summary>
+        /// <returns>List of campaigns.</returns>
+        [HttpGet("PagedCampaign")]
+        [ProducesResponseType(typeof(PagedList<Campaign>), 200)]
+        public async Task<PagedList<Campaign>> GetCampaigns([FromQuery] PageQuery pageQuery)
+        {
+            var campaigns = await _campaignService.PagedListAsync(pageQuery);
+
+            var metadata = new
+            {
+                campaigns.TotalCount,
+                campaigns.PageSize,
+                campaigns.CurrentPage,
+                campaigns.TotalPages,
+                campaigns.HasNext,
+                campaigns.HasPrevious
+            };
+            Response.Headers.Add("X-Pagination", JsonConvert.SerializeObject(metadata));
+
+
+            return campaigns;
+        }
+
+        /// <summary>
+        /// Lists all campaigns .
         /// </summary>
         /// <returns>List of campaigns.</returns>
         [HttpGet]
@@ -35,7 +61,7 @@ namespace Scrutz.Controllers
         public async Task<IEnumerable<Campaign>> GetCampaigns()
         {
             var campaigns = await _campaignService.ListAsync();
-            
+
 
             return campaigns;
         }

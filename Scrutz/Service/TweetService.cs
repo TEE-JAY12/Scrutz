@@ -24,6 +24,7 @@ namespace Scrutz.Service
         public async Task<IEnumerable<Tweets>> FindByCampaignIdAsync(int id)
         {
             var tweet = await _tweetRepository.FindByCampaignIdAsync(id);
+               
 
             return tweet;
 
@@ -48,7 +49,7 @@ namespace Scrutz.Service
 
                 var tweetmetrics = await _tweetMetricRepo.FindByTweetID(item.TweetID);
 
-                hashMap.Add("TweetMetricID", tweetmetrics.Id);
+                //hashMap.Add("TweetMetricID", tweetmetrics.Id);
                 hashMap.Add("ImpressionCount", tweetmetrics.ImpressionCount);
                 hashMap.Add("LikeCount", tweetmetrics.LikeCount);
                 hashMap.Add("QuoteCount", tweetmetrics.QuoteCount);
@@ -80,5 +81,22 @@ namespace Scrutz.Service
             return arrayList;
         }
 
+        public async Task<PagedList<Tweets>> PagedListAsync(PageQuery pageQuery, int campaignId)
+        {
+
+            var campaign = await _tweetRepository.FindByCampaignIdPaged(pageQuery, campaignId);
+
+            return campaign;
+        }
+
+        public async Task<PagedList<Tweets>> PagedListAsync()
+        {
+
+            var campaign = await _tweetRepository.PagedListAsync();
+
+            return campaign;
+        }
+
+     
     }
 }

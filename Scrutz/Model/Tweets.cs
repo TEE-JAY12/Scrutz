@@ -33,6 +33,6 @@ namespace Scrutz.Model
         //[Column(TypeName = "decimal(18,2)")]
         //public decimal? SentimentScore { get; set; }
 
-        //public TweetMetric TweetMetric { get; set; }
+        public TweetMetric TweetMetric { get; set; }
     }
 }

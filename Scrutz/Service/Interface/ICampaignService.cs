@@ -6,6 +6,7 @@ namespace Scrutz.Service.Interface
     public interface ICampaignService
     {
         Task<IEnumerable<Campaign>> ListAsync();
+        Task<PagedList<Campaign>> PagedListAsync(PageQuery pageQuery);
         Task<CampaignResponse> AddAsync(Campaign campaign);
         Task<CampaignResponse> FindByIdAsync(int id);
         Task<CampaignResponse> UpdateAsync(int id, Campaign campaign);

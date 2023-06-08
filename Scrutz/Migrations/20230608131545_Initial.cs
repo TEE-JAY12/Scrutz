@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Scrutz.Migrations
 {
     /// <inheritdoc />
-    public partial class Intial : Migration
+    public partial class Initial : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -42,7 +42,7 @@ namespace Scrutz.Migrations
                     RecieveDailyDigest = table.Column<bool>(type: "bit", nullable: true),
                     LinkedKeywords = table.Column<string>(type: "nvarchar(300)", maxLength: 300, nullable: true),
                     DailyDigestTime = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    CampaignStatus = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true, defaultValue: "InActive")
+                    CampaignStatus = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true, defaultValue: "Active")
                 },
                 constraints: table =>
                 {
@@ -67,16 +67,16 @@ namespace Scrutz.Migrations
                 columns: table => new
                 {
                     UserID = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    Name = table.Column<string>(type: "nvarchar(30)", maxLength: 30, nullable: false),
-                    Username = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
-                    Description = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false),
-                    Image_URL = table.Column<string>(type: "nvarchar(150)", maxLength: 150, nullable: false),
-                    IsVerified = table.Column<bool>(type: "bit", nullable: false),
-                    FollowersCount = table.Column<int>(type: "int", nullable: false),
-                    FollowingCount = table.Column<int>(type: "int", nullable: false),
-                    TweetCount = table.Column<int>(type: "int", nullable: false),
-                    ListedCount = table.Column<int>(type: "int", nullable: false),
-                    CreateDate = table.Column<DateTime>(type: "datetime2", nullable: false)
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Username = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Image_URL = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    IsVerified = table.Column<bool>(type: "bit", nullable: true),
+                    FollowersCount = table.Column<int>(type: "int", nullable: true),
+                    FollowingCount = table.Column<int>(type: "int", nullable: true),
+                    TweetCount = table.Column<int>(type: "int", nullable: true),
+                    ListedCount = table.Column<int>(type: "int", nullable: true),
+                    CreateDate = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -115,12 +115,11 @@ namespace Scrutz.Migrations
                 {
                     TweetID = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     CampaignId = table.Column<int>(type: "int", nullable: false),
-                    UserID = table.Column<string>(type: "nvarchar(450)", nullable: true),
-                    Lang = table.Column<string>(type: "nvarchar(5)", maxLength: 5, nullable: false),
-                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    Text = table.Column<string>(type: "nvarchar(300)", maxLength: 300, nullable: false),
-                    Sentiment = table.Column<string>(type: "nvarchar(10)", maxLength: 10, nullable: false),
-                    SentimentScore = table.Column<decimal>(type: "decimal(18,2)", nullable: false)
+                    UserID = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    Lang = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    Text = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Sentiment = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -132,39 +131,33 @@ namespace Scrutz.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Tweet_Users_TweetID",
-                        column: x => x.TweetID,
-                        principalTable: "Users",
-                        principalColumn: "UserID",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
                         name: "FK_Tweet_Users_UserID",
                         column: x => x.UserID,
                         principalTable: "Users",
-                        principalColumn: "UserID");
+                        principalColumn: "UserID",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
                 name: "TweetMetrics",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    TweetID = table.Column<string>(type: "nvarchar(450)", nullable: true),
-                    ImpressionCount = table.Column<int>(type: "int", nullable: false),
-                    LikeCount = table.Column<int>(type: "int", nullable: false),
-                    QuoteCount = table.Column<int>(type: "int", nullable: false),
-                    ReplyCount = table.Column<int>(type: "int", nullable: false),
-                    RetweetCount = table.Column<int>(type: "int", nullable: false)
+                    TweetID = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    ImpressionCount = table.Column<int>(type: "int", nullable: true),
+                    LikeCount = table.Column<int>(type: "int", nullable: true),
+                    QuoteCount = table.Column<int>(type: "int", nullable: true),
+                    ReplyCount = table.Column<int>(type: "int", nullable: true),
+                    RetweetCount = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_TweetMetrics", x => x.Id);
+                    table.PrimaryKey("PK_TweetMetrics", x => x.TweetID);
                     table.ForeignKey(
                         name: "FK_TweetMetrics_Tweet_TweetID",
                         column: x => x.TweetID,
                         principalTable: "Tweet",
-                        principalColumn: "TweetID");
+                        principalColumn: "TweetID",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
@@ -181,13 +174,6 @@ namespace Scrutz.Migrations
                 name: "IX_Tweet_UserID",
                 table: "Tweet",
                 column: "UserID");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_TweetMetrics_TweetID",
-                table: "TweetMetrics",
-                column: "TweetID",
-                unique: true,
-                filter: "[TweetID] IS NOT NULL");
         }
 
         /// <inheritdoc />

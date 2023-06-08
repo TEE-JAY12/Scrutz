@@ -38,13 +38,21 @@ namespace Scrutz.Service
             }
         }
 
-      
+
 
         //Task<IEnumerable<Campaign>> ListAsync();
         //Task AddAsync(Campaign campaign);
         //Task<Campaign> FindByIdAsync(int id);
         //void Update(Campaign campaign);
         //void Remove(Campaign campaign);
+        public async Task<PagedList<Campaign>> PagedListAsync(PageQuery pageQuery)
+        {
+
+            var campaign = await _campaignRepository.PagedListAsync(pageQuery);
+
+            return campaign;
+        }
+
 
         public async Task<IEnumerable<Campaign>> ListAsync()
         {

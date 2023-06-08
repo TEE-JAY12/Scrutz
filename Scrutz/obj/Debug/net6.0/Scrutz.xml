@@ -39,9 +39,15 @@
             </summary>
             <returns>Get company logo </returns>
         </member>
+        <member name="M:Scrutz.Controllers.CampaignController.GetCampaigns(Scrutz.Model.PageQuery)">
+            <summary>
+            Lists all campaigns Paged.
+            </summary>
+            <returns>List of campaigns.</returns>
+        </member>
         <member name="M:Scrutz.Controllers.CampaignController.GetCampaigns">
             <summary>
-            Lists all campaigns.
+            Lists all campaigns .
             </summary>
             <returns>List of campaigns.</returns>
         </member>
@@ -125,112 +131,22 @@
             </summary>
             <returns>List of campaigns.</returns>
         </member>
-        <member name="T:Scrutz.Migrations.Intial">
+        <member name="M:Scrutz.Controllers.TweetController.GetCampaigns(Scrutz.Model.PageQuery,System.Int32)">
+            <summary>
+            Lists all tweets by campaignId Paged.
+            </summary>
+            <returns>List of Tweets.</returns>
+        </member>
+        <member name="T:Scrutz.Migrations.Initial">
             <inheritdoc />
         </member>
-        <member name="M:Scrutz.Migrations.Intial.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+        <member name="M:Scrutz.Migrations.Initial.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
             <inheritdoc />
         </member>
-        <member name="M:Scrutz.Migrations.Intial.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+        <member name="M:Scrutz.Migrations.Initial.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
             <inheritdoc />
         </member>
-        <member name="M:Scrutz.Migrations.Intial.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
-            <inheritdoc />
-        </member>
-        <member name="T:Scrutz.Migrations.Intial2">
-            <inheritdoc />
-        </member>
-        <member name="M:Scrutz.Migrations.Intial2.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
-            <inheritdoc />
-        </member>
-        <member name="M:Scrutz.Migrations.Intial2.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
-            <inheritdoc />
-        </member>
-        <member name="M:Scrutz.Migrations.Intial2.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
-            <inheritdoc />
-        </member>
-        <member name="T:Scrutz.Migrations.AddedNullpropertyUser">
-            <inheritdoc />
-        </member>
-        <member name="M:Scrutz.Migrations.AddedNullpropertyUser.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
-            <inheritdoc />
-        </member>
-        <member name="M:Scrutz.Migrations.AddedNullpropertyUser.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
-            <inheritdoc />
-        </member>
-        <member name="M:Scrutz.Migrations.AddedNullpropertyUser.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
-            <inheritdoc />
-        </member>
-        <member name="T:Scrutz.Migrations.AddedNullpropertyTweet">
-            <inheritdoc />
-        </member>
-        <member name="M:Scrutz.Migrations.AddedNullpropertyTweet.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
-            <inheritdoc />
-        </member>
-        <member name="M:Scrutz.Migrations.AddedNullpropertyTweet.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
-            <inheritdoc />
-        </member>
-        <member name="M:Scrutz.Migrations.AddedNullpropertyTweet.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
-            <inheritdoc />
-        </member>
-        <member name="T:Scrutz.Migrations.AddedNullpropertyTweetMetric">
-            <inheritdoc />
-        </member>
-        <member name="M:Scrutz.Migrations.AddedNullpropertyTweetMetric.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
-            <inheritdoc />
-        </member>
-        <member name="M:Scrutz.Migrations.AddedNullpropertyTweetMetric.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
-            <inheritdoc />
-        </member>
-        <member name="M:Scrutz.Migrations.AddedNullpropertyTweetMetric.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
-            <inheritdoc />
-        </member>
-        <member name="T:Scrutz.Migrations.AddedNullpropertytoUser">
-            <inheritdoc />
-        </member>
-        <member name="M:Scrutz.Migrations.AddedNullpropertytoUser.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
-            <inheritdoc />
-        </member>
-        <member name="M:Scrutz.Migrations.AddedNullpropertytoUser.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
-            <inheritdoc />
-        </member>
-        <member name="M:Scrutz.Migrations.AddedNullpropertytoUser.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
-            <inheritdoc />
-        </member>
-        <member name="T:Scrutz.Migrations.DropedtheSentimentscoreintweet">
-            <inheritdoc />
-        </member>
-        <member name="M:Scrutz.Migrations.DropedtheSentimentscoreintweet.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
-            <inheritdoc />
-        </member>
-        <member name="M:Scrutz.Migrations.DropedtheSentimentscoreintweet.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
-            <inheritdoc />
-        </member>
-        <member name="M:Scrutz.Migrations.DropedtheSentimentscoreintweet.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
-            <inheritdoc />
-        </member>
-        <member name="T:Scrutz.Migrations.nullpropertyforTweetanduserid">
-            <inheritdoc />
-        </member>
-        <member name="M:Scrutz.Migrations.nullpropertyforTweetanduserid.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
-            <inheritdoc />
-        </member>
-        <member name="M:Scrutz.Migrations.nullpropertyforTweetanduserid.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
-            <inheritdoc />
-        </member>
-        <member name="M:Scrutz.Migrations.nullpropertyforTweetanduserid.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
-            <inheritdoc />
-        </member>
-        <member name="T:Scrutz.Migrations.ChangedcampaignstatusAndremovedcharacterLength">
-            <inheritdoc />
-        </member>
-        <member name="M:Scrutz.Migrations.ChangedcampaignstatusAndremovedcharacterLength.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
-            <inheritdoc />
-        </member>
-        <member name="M:Scrutz.Migrations.ChangedcampaignstatusAndremovedcharacterLength.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
-            <inheritdoc />
-        </member>
-        <member name="M:Scrutz.Migrations.ChangedcampaignstatusAndremovedcharacterLength.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+        <member name="M:Scrutz.Migrations.Initial.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
             <inheritdoc />
         </member>
         <member name="M:Scrutz.Service.Communication.AccountSettingResponse.#ctor(Scrutz.Model.AccountSetting)">
