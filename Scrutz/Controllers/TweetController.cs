@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using Scrutz.Model;
 using Scrutz.Service;
+using Scrutz.Service.Communication;
 using Scrutz.Service.Interface;
 using System.Collections;
 
@@ -83,6 +84,49 @@ namespace Scrutz.Controllers
 
             return campaigns;
         }
+        /// <summary>
+        /// Lists all tweets by campaignId Paged.Returns Paged Data
+        /// </summary>
+        /// <returns>List of Tweets.</returns>
+
+        [HttpGet("PagedTweetsByCampaignIds")]
+        [ProducesResponseType(typeof(PagedList<Campaign>), 200)]
+        public async Task<PagedResponse<Tweets>> GetCampaignss([FromQuery] PageQuery pageQuery, int id)
+        {
+            PagedList<Tweets> campaigns;
+
+            if (id > 0)
+            {
+                //campaigns = await _tweetService.PagedListAsync();
+                campaigns = await _tweetService.PagedListAsync(pageQuery, id);
+            }
+            else
+            {
+                campaigns = await _tweetService.PagedListAsync();
+                //campaigns = await _tweetService.PagedListAsync(pageQuery, id);
+            }
+            var metadata = new
+            {
+                campaigns.TotalCount,
+                campaigns.PageSize,
+                campaigns.CurrentPage,
+                campaigns.TotalPages,
+                campaigns.HasNext,
+                campaigns.HasPrevious
+            };
+            Response.Headers.Add("X-Pagination", JsonConvert.SerializeObject(metadata));
+
+
+            var pagedResponse = new PagedResponse<Tweets>
+            {
+                Items = campaigns,
+                Metadata = metadata
+            };
+
+            return pagedResponse;
+        }
+
+
 
 
         ///// <summary>

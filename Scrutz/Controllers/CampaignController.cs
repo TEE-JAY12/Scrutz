@@ -8,6 +8,7 @@ using Newtonsoft.Json;
 using Scrutz.Model;
 using Scrutz.Model.DTO;
 using Scrutz.Resource;
+using Scrutz.Service.Communication;
 using Scrutz.Service.Interface;
 
 namespace Scrutz.Controllers
@@ -33,7 +34,7 @@ namespace Scrutz.Controllers
         /// <returns>List of campaigns.</returns>
         [HttpGet("PagedCampaign")]
         [ProducesResponseType(typeof(PagedList<Campaign>), 200)]
-        public async Task<PagedList<Campaign>> GetCampaigns([FromQuery] PageQuery pageQuery)
+        public async Task<PagedList<Campaign>> GetCampaign([FromQuery] PageQuery pageQuery)
         {
             var campaigns = await _campaignService.PagedListAsync(pageQuery);
 
@@ -48,8 +49,39 @@ namespace Scrutz.Controllers
             };
             Response.Headers.Add("X-Pagination", JsonConvert.SerializeObject(metadata));
 
-
             return campaigns;
+
+        }
+
+
+        /// <summary>
+        /// Lists all campaigns Paged.Returns Paged Data
+        /// </summary>
+        /// <returns>List of campaigns.</returns>
+        [HttpGet("PagedCampaigns")]
+        [ProducesResponseType(typeof(PagedList<Campaign>), 200)]
+        public async Task<PagedResponse<Campaign>> GetCampaigns([FromQuery] PageQuery pageQuery)
+        {
+            var campaigns = await _campaignService.PagedListAsync(pageQuery);
+
+            var metadata = new
+            {
+                campaigns.TotalCount,
+                campaigns.PageSize,
+                campaigns.CurrentPage,
+                campaigns.TotalPages,
+                campaigns.HasNext,
+                campaigns.HasPrevious
+            };
+            Response.Headers.Add("X-Pagination", JsonConvert.SerializeObject(metadata));
+
+            var pagedResponse = new PagedResponse<Campaign>
+            {
+                Items = campaigns,
+                Metadata = metadata
+            };
+
+            return pagedResponse;
         }
 
         /// <summary>

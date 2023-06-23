@@ -39,9 +39,15 @@
             </summary>
             <returns>Get company logo </returns>
         </member>
-        <member name="M:Scrutz.Controllers.CampaignController.GetCampaigns(Scrutz.Model.PageQuery)">
+        <member name="M:Scrutz.Controllers.CampaignController.GetCampaign(Scrutz.Model.PageQuery)">
             <summary>
             Lists all campaigns Paged.
+            </summary>
+            <returns>List of campaigns.</returns>
+        </member>
+        <member name="M:Scrutz.Controllers.CampaignController.GetCampaigns(Scrutz.Model.PageQuery)">
+            <summary>
+            Lists all campaigns Paged.Returns Paged Data
             </summary>
             <returns>List of campaigns.</returns>
         </member>
@@ -134,6 +140,12 @@
         <member name="M:Scrutz.Controllers.TweetController.GetCampaigns(Scrutz.Model.PageQuery,System.Int32)">
             <summary>
             Lists all tweets by campaignId Paged.
+            </summary>
+            <returns>List of Tweets.</returns>
+        </member>
+        <member name="M:Scrutz.Controllers.TweetController.GetCampaignss(Scrutz.Model.PageQuery,System.Int32)">
+            <summary>
+            Lists all tweets by campaignId Paged.Returns Paged Data
             </summary>
             <returns>List of Tweets.</returns>
         </member>

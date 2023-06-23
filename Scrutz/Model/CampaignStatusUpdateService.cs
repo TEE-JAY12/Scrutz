@@ -6,7 +6,7 @@ namespace Scrutz.Model
     public class CampaignStatusUpdateService : BackgroundService
     {
         private readonly IServiceProvider services;
-        private readonly TimeSpan checkInterval = TimeSpan.FromMinutes(1);
+        private readonly TimeSpan checkInterval = TimeSpan.FromMinutes(30);
 
         public CampaignStatusUpdateService(IServiceProvider services)
         {
