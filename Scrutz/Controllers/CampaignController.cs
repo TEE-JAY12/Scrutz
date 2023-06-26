@@ -57,7 +57,7 @@ namespace Scrutz.Controllers
         /// <summary>
         /// Lists all campaigns Paged.Returns Paged Data
         /// </summary>
-        /// <returns>List of campaigns.</returns>
+        /// <returns>List of campaigns.</returns> 
         [HttpGet("PagedCampaigns")]
         [ProducesResponseType(typeof(PagedList<Campaign>), 200)]
         public async Task<PagedResponse<Campaign>> GetCampaigns([FromQuery] PageQuery pageQuery)

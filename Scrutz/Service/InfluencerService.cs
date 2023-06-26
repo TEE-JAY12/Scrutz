@@ -111,5 +111,13 @@ namespace Scrutz.Service
             return new InfluencerResponse(existinginfluencer);
 
         }
+
+        public async Task<PagedList<Influencer>> PagedListAsync(PageQuery pageQuery)
+        {
+
+            var campaign = await _influncerRepository.PagedListAsync(pageQuery);
+
+            return campaign;
+        }
     }
 }

@@ -8,6 +8,8 @@ using Scrutz.Service.Interface;
 using Scrutz.Service;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.Identity.Web.Resource;
+using Newtonsoft.Json;
+using Scrutz.Service.Communication;
 
 namespace Scrutz.Controllers
 {
@@ -37,6 +39,36 @@ namespace Scrutz.Controllers
 
 
             return influencer;
+        }
+
+        /// <summary>
+        /// Lists all influencers Paged.Returns Paged Data
+        /// </summary>
+        /// <returns>List of campaigns.</returns> 
+        [HttpGet("PagedCampaigns")]
+        [ProducesResponseType(typeof(PagedList<Influencer>), 200)]
+        public async Task<PagedResponse<Influencer>> GetCampaigns([FromQuery] PageQuery pageQuery)
+        {
+            var campaigns = await _influencerService.PagedListAsync(pageQuery);
+
+            var metadata = new
+            {
+                campaigns.TotalCount,
+                campaigns.PageSize,
+                campaigns.CurrentPage,
+                campaigns.TotalPages,
+                campaigns.HasNext,
+                campaigns.HasPrevious
+            };
+            Response.Headers.Add("X-Pagination", JsonConvert.SerializeObject(metadata));
+
+            var pagedResponse = new PagedResponse<Influencer>
+            {
+                Items = campaigns,
+                Metadata = metadata
+            };
+
+            return pagedResponse;
         }
 
         /// <summary>

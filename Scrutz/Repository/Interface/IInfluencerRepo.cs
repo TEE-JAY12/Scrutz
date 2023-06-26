@@ -9,5 +9,6 @@ namespace Scrutz.Repository.Interface
         Task<Influencer> FindAsync(int id);
         void Update(Influencer influencer);
         void Remove(Influencer influencer);
+        Task<PagedList<Influencer>> PagedListAsync(PageQuery pageQuery);
     }
 }

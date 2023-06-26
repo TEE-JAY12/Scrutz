@@ -10,5 +10,7 @@ namespace Scrutz.Service.Interface
         Task<InfluencerResponse> FindByIdAsync(int id);
         Task<InfluencerResponse> UpdateAsync(int id, Influencer influencer);
         Task<InfluencerResponse> DeleteAsync(int id);
+
+        Task<PagedList<Influencer>> PagedListAsync(PageQuery pageQuery);
     }
 }

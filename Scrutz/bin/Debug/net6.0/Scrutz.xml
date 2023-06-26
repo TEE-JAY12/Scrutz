@@ -49,7 +49,7 @@
             <summary>
             Lists all campaigns Paged.Returns Paged Data
             </summary>
-            <returns>List of campaigns.</returns>
+            <returns>List of campaigns.</returns> 
         </member>
         <member name="M:Scrutz.Controllers.CampaignController.GetCampaigns">
             <summary>
@@ -96,6 +96,12 @@
             Lists all Influencers.
             </summary>
             <returns>List of Influencers.</returns>
+        </member>
+        <member name="M:Scrutz.Controllers.InfluencerController.GetCampaigns(Scrutz.Model.PageQuery)">
+            <summary>
+            Lists all influencers Paged.Returns Paged Data
+            </summary>
+            <returns>List of campaigns.</returns> 
         </member>
         <member name="M:Scrutz.Controllers.InfluencerController.PostInfluencer(Scrutz.Model.DTO.InfluencerDTO)">
             <summary>

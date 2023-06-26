@@ -36,5 +36,15 @@ namespace Scrutz.Repository
         {
             _context.Influencers.Update(influencer);
         }
+
+        public async Task<PagedList<Influencer>> PagedListAsync(PageQuery pageQuery)
+        {
+            var query = _context.Influencers.AsQueryable();
+            int PageSize = 10;
+
+            var pagedList = await Task.FromResult(PagedList<Influencer>.ToPagedList(query, pageQuery.pageNumber, PageSize));
+
+            return pagedList;
+        }
     }
 }
