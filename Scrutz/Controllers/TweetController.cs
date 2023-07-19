@@ -127,6 +127,44 @@ namespace Scrutz.Controllers
         }
 
 
+        [HttpGet("PagedTweetsByCampaignIdes")]
+        [ProducesResponseType(typeof(PagedList<Campaign>), 200)]
+        public async Task<PagedResponse<Tweets>> GetCampaignses([FromQuery] PageQuery pageQuery, int id, DateTime? startDate, DateTime? endDate)
+        {
+            PagedList<Tweets> campaigns;
+
+            if (id > 0)
+            {
+                //campaigns = await _tweetService.PagedListAsync();
+                campaigns = await _tweetService.PagedListAsyncs(pageQuery,id,startDate,endDate);
+            }
+            else
+            {
+                campaigns = await _tweetService.PagedListAsync();
+                //campaigns = await _tweetService.PagedListAsync(pageQuery, id);
+            }
+            var metadata = new
+            {
+                campaigns.TotalCount,
+                campaigns.PageSize,
+                campaigns.CurrentPage,
+                campaigns.TotalPages,
+                campaigns.HasNext,
+                campaigns.HasPrevious
+            };
+            Response.Headers.Add("X-Pagination", JsonConvert.SerializeObject(metadata));
+
+
+            var pagedResponse = new PagedResponse<Tweets>
+            {
+                Items = campaigns,
+                Metadata = metadata
+            };
+
+            return pagedResponse;
+        }
+
+
 
 
         ///// <summary>

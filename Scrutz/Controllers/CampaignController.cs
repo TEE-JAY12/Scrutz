@@ -84,6 +84,37 @@ namespace Scrutz.Controllers
             return pagedResponse;
         }
 
+
+        /// <summary>
+        /// Lists all campaigns Paged.Returns Paged Data
+        /// </summary>
+        /// <returns>List of campaigns.</returns> 
+        [HttpGet("PagedCampaignsnew")]
+        [ProducesResponseType(typeof(PagedList<Campaign>), 200)]
+        public async Task<PagedResponse<Campaign>> GetCampaignsnew([FromQuery] PageQuery pageQuery, [FromQuery] DateTime? startDate, [FromQuery] DateTime? endDate)
+        {
+            var campaigns = await _campaignService.PagedListAsyncs(pageQuery, startDate, endDate);
+
+            var metadata = new
+            {
+                campaigns.TotalCount,
+                campaigns.PageSize,
+                campaigns.CurrentPage,
+                campaigns.TotalPages,
+                campaigns.HasNext,
+                campaigns.HasPrevious
+            };
+            Response.Headers.Add("X-Pagination", JsonConvert.SerializeObject(metadata));
+
+            var pagedResponse = new PagedResponse<Campaign>
+            {
+                Items = campaigns,
+                Metadata = metadata
+            };
+
+            return pagedResponse;
+        }
+
         /// <summary>
         /// Lists all campaigns .
         /// </summary>

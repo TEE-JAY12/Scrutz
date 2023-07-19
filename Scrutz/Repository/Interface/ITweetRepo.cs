@@ -11,5 +11,7 @@ namespace Scrutz.Repository.Interface
 
         Task<PagedList<Tweets>> PagedListAsync();
 
+        Task<PagedList<Tweets>> FindByCampaignIdPageds(PageQuery pageQuery, int campaignId, DateTime? startDate, DateTime? endDate);
+
     }
 }

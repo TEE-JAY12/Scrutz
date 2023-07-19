@@ -13,5 +13,7 @@ namespace Scrutz.Service.Interface
         Task<PagedList<Tweets>> PagedListAsync(PageQuery pageQuery, int campaignId);
 
         Task<PagedList<Tweets>> PagedListAsync();
+
+        Task<PagedList<Tweets>> PagedListAsyncs(PageQuery pageQuery, int campaignId, DateTime? startDate, DateTime? endDate);
     }
 }

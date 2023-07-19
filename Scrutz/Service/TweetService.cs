@@ -97,6 +97,14 @@ namespace Scrutz.Service
             return campaign;
         }
 
-     
+        public async Task<PagedList<Tweets>> PagedListAsyncs(PageQuery pageQuery, int campaignId, DateTime? startDate, DateTime? endDate)
+        {
+
+            var campaign = await _tweetRepository.FindByCampaignIdPageds(pageQuery, campaignId,startDate,endDate);
+
+            return campaign;
+        }
+
+
     }
 }

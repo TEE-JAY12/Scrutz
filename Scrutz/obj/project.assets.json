@@ -11644,19 +11644,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\HP\\.nuget\\packages\\": {}
+    "C:\\Users\\AKINYEMI\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\HP\\Documents\\C# FILES\\Scrutz\\Scrutz\\Scrutz.csproj",
+      "projectUniqueName": "C:\\Users\\AKINYEMI\\Documents\\C# FILES\\Scrutz\\Scrutz\\Scrutz.csproj",
       "projectName": "Scrutz",
-      "projectPath": "C:\\Users\\HP\\Documents\\C# FILES\\Scrutz\\Scrutz\\Scrutz.csproj",
-      "packagesPath": "C:\\Users\\HP\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\HP\\Documents\\C# FILES\\Scrutz\\Scrutz\\obj\\",
+      "projectPath": "C:\\Users\\AKINYEMI\\Documents\\C# FILES\\Scrutz\\Scrutz\\Scrutz.csproj",
+      "packagesPath": "C:\\Users\\AKINYEMI\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\AKINYEMI\\Documents\\C# FILES\\Scrutz\\Scrutz\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\HP\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\AKINYEMI\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -11664,6 +11664,7 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "C:\\Program Files\\dotnet\\sdk\\7.0.306\\Sdks\\Microsoft.NET.Sdk.Web\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -11738,7 +11739,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.202\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.306\\RuntimeIdentifierGraph.json"
       }
     }
   }

@@ -12,5 +12,7 @@ namespace Scrutz.Service.Interface
         Task<CampaignResponse> UpdateAsync(int id, Campaign campaign);
         Task<CampaignResponse> DeleteAsync(int id);
         Task<CampaignResponse> UpdateActiveStatus(int id,ActiveStatus activeStatus);
+
+        Task<PagedList<Campaign>> PagedListAsyncs(PageQuery pageQuery, DateTime? startDate, DateTime? endDate);
     }
 }

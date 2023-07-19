@@ -57,6 +57,31 @@ namespace Scrutz.Repository
             return pagedList;
         }
 
+        public async Task<PagedList<Campaign>> PagedListAsyncs(PageQuery pageQuery, DateTime? startDate, DateTime? endDate)
+        {
+            var query = _context.Campaigns.AsQueryable();
+
+            // Apply the date range filter if both start date and end date are provided
+            if (startDate.HasValue && endDate.HasValue)
+            {
+                query = query.Where(c => c.StartDate >= startDate.Value && c.EndDate <= endDate.Value);
+            }
+            // Apply the start date filter if only the start date is provided
+            else if (startDate.HasValue)
+            {
+                query = query.Where(c => c.StartDate >= startDate.Value);
+            }
+
+            int PageSize = 10;
+            var pagedList = await Task.FromResult(PagedList<Campaign>.ToPagedList(query, pageQuery.pageNumber, PageSize));
+
+            return pagedList;
+        }
+
+
+
+
+
 
         public void Remove(Campaign campaign)
         {
