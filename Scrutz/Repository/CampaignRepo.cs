@@ -57,7 +57,7 @@ namespace Scrutz.Repository
             return pagedList;
         }
 
-        public async Task<PagedList<Campaign>> PagedListAsyncs(PageQuery pageQuery, DateTime? startDate, DateTime? endDate)
+        public async Task<PagedList<Campaign>> PagedListAsyncs(PageQuery pageQuery, DateTime? startDate, DateTime? endDate, ActiveStatus? campaignStatus)
         {
             var query = _context.Campaigns.AsQueryable();
 
@@ -70,6 +70,13 @@ namespace Scrutz.Repository
             else if (startDate.HasValue)
             {
                 query = query.Where(c => c.StartDate >= startDate.Value);
+            }
+
+
+            // Apply the campaign status filter if the status is provided
+            if (campaignStatus.HasValue)
+            {
+                query = query.Where(c => c.CampaignStatus == campaignStatus.Value);
             }
 
             int PageSize = 10;

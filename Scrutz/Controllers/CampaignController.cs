@@ -91,9 +91,9 @@ namespace Scrutz.Controllers
         /// <returns>List of campaigns.</returns> 
         [HttpGet("PagedCampaignsnew")]
         [ProducesResponseType(typeof(PagedList<Campaign>), 200)]
-        public async Task<PagedResponse<Campaign>> GetCampaignsnew([FromQuery] PageQuery pageQuery, [FromQuery] DateTime? startDate, [FromQuery] DateTime? endDate)
+        public async Task<PagedResponse<Campaign>> GetCampaignsnew([FromQuery] PageQuery pageQuery, [FromQuery] DateTime? startDate, [FromQuery] DateTime? endDate, [FromQuery] ActiveStatus? campaignStatus)
         {
-            var campaigns = await _campaignService.PagedListAsyncs(pageQuery, startDate, endDate);
+            var campaigns = await _campaignService.PagedListAsyncs(pageQuery, startDate, endDate,campaignStatus);
 
             var metadata = new
             {

@@ -12,6 +12,6 @@ namespace Scrutz.Repository.Interface
         void Update(Campaign campaign);
         void Remove(Campaign campaign);
 
-        Task<PagedList<Campaign>> PagedListAsyncs(PageQuery pageQuery, DateTime? startDate, DateTime? endDate);
+        Task<PagedList<Campaign>> PagedListAsyncs(PageQuery pageQuery, DateTime? startDate, DateTime? endDate, ActiveStatus? campaignStatus);
     }
 }
