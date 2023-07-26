@@ -240,6 +240,16 @@ namespace Scrutz.Controllers
             return Ok(campaignResource);
         }
 
+        [HttpGet("campaignCountByStatus")]
+        [ProducesResponseType(typeof(Campaign), 200)]
+        [ProducesResponseType(typeof(ErrorResource), 400)]
+        public async Task<ActionResult<Dictionary<string, object>>> GetCampaignCountByStatus()
+        {
+            var counts = await _campaignService.GetCampaignCountByStatusAsync();
+
+            return Ok(counts);
+        }
+
 
     }
 }

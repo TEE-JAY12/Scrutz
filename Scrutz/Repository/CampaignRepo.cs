@@ -2,6 +2,7 @@
 using Scrutz.Data;
 using Scrutz.Model;
 using Scrutz.Repository.Interface;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace Scrutz.Repository
 {
@@ -86,10 +87,6 @@ namespace Scrutz.Repository
         }
 
 
-
-
-
-
         public void Remove(Campaign campaign)
         {
             _context.Campaigns.Remove(campaign);
@@ -100,6 +97,30 @@ namespace Scrutz.Repository
             _context.Campaigns.Update(campaign);
         }
 
-        
+        //public async Task<IEnumerable<Tweets>> FindByCampaignIdAsync(int campaignId)
+        //{
+        //    return _context.Tweet.Where(tweet => tweet.CampaignId == campaignId).ToList();
+        //}
+
+
+        public async Task<int> GetCampaignCountByStatusAsync(ActiveStatus? status)
+        {
+            //if (status != null)
+            //{
+            //    return await _context.Campaigns.CountAsync(campaign => campaign.CampaignStatus == status);
+            //}
+            //else
+            //{
+            //    return await _context.Campaigns.CountAsync();
+            //}
+
+            return await _context.Campaigns.CountAsync(campaign => campaign.CampaignStatus == status);
+        }
+
+        public async Task<int> GetCampaignCountByStatusAsync()
+        {
+             return await _context.Campaigns.CountAsync();
+            
+        }
     }
 }

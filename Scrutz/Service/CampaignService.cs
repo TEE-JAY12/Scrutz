@@ -1,8 +1,10 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Scrutz.Model;
+using Scrutz.Repository;
 using Scrutz.Repository.Interface;
 using Scrutz.Service.Communication;
 using Scrutz.Service.Interface;
+using System.Collections;
 
 namespace Scrutz.Service
 {
@@ -149,5 +151,22 @@ namespace Scrutz.Service
             
         }
 
+        public async Task<Dictionary<string, object>> GetCampaignCountByStatusAsync()
+        {
+            var active = await _campaignRepository.GetCampaignCountByStatusAsync(ActiveStatus.Active);
+            var inActive = await _campaignRepository.GetCampaignCountByStatusAsync(ActiveStatus.InActive);
+            var total = await _campaignRepository.GetCampaignCountByStatusAsync( );
+
+            Dictionary<string, object> hashMap = new Dictionary<string, object>();
+
+            hashMap.Add("Active Count", active);
+            hashMap.Add("Inactive Count", inActive);
+            hashMap.Add("Total", total);
+
+            return hashMap;
+        }
     }
+
+
+    
 }

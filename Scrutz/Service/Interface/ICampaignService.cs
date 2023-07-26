@@ -14,5 +14,7 @@ namespace Scrutz.Service.Interface
         Task<CampaignResponse> UpdateActiveStatus(int id,ActiveStatus activeStatus);
 
         Task<PagedList<Campaign>> PagedListAsyncs(PageQuery pageQuery, DateTime? startDate, DateTime? endDate, ActiveStatus? campaignStatus);
+
+        Task<Dictionary<string, object>> GetCampaignCountByStatusAsync();
     }
 }
