@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.5.33516.290
+VisualStudioVersion = 17.6.33829.357
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Scrutz", "Scrutz\Scrutz.csproj", "{C59F4E92-4C0B-4063-997E-A4CB40B984F0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Scrutz", "Scrutz\Scrutz.csproj", "{8239A96C-57DF-46E5-9409-BB3F3E112598}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,15 +11,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{C59F4E92-4C0B-4063-997E-A4CB40B984F0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C59F4E92-4C0B-4063-997E-A4CB40B984F0}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C59F4E92-4C0B-4063-997E-A4CB40B984F0}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C59F4E92-4C0B-4063-997E-A4CB40B984F0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8239A96C-57DF-46E5-9409-BB3F3E112598}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8239A96C-57DF-46E5-9409-BB3F3E112598}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8239A96C-57DF-46E5-9409-BB3F3E112598}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8239A96C-57DF-46E5-9409-BB3F3E112598}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {AE3DDD13-70F8-4985-BA1F-4566682E7796}
+		SolutionGuid = {E352A9A0-5846-43B0-A4B3-D38A97215F2B}
 	EndGlobalSection
 EndGlobal

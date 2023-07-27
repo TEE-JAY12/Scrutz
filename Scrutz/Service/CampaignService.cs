@@ -159,8 +159,8 @@ namespace Scrutz.Service
 
             Dictionary<string, object> hashMap = new Dictionary<string, object>();
 
-            hashMap.Add("Active Count", active);
-            hashMap.Add("Inactive Count", inActive);
+            hashMap.Add("ActiveCount", active);
+            hashMap.Add("InactiveCount", inActive);
             hashMap.Add("Total", total);
 
             return hashMap;
