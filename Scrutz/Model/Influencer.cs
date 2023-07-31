@@ -19,5 +19,8 @@ namespace Scrutz.Model
         [MaxLength(100)]
         public string[]? LinkedKeywords { get; set; }
 
+        [MaxLength(100)]
+        public string[]? SocialPlatforms { get; set; }
+
     }
 }

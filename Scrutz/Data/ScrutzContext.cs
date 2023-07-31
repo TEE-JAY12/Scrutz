@@ -65,9 +65,19 @@ namespace Scrutz.Data
                 );
 
             modelBuilder.Entity<Influencer>()
+               .Property(e => e.SocialPlatforms)
+               .HasMaxLength(300)
+               .HasConversion(
+                   v => string.Join(',', v),
+                   v => v.Split(',', StringSplitOptions.RemoveEmptyEntries)
+                         .ToArray()
+               );
+
+            modelBuilder.Entity<Influencer>()
                               .HasOne(t => t.Campaign)
                               .WithMany(c => c.Influencers)
                               .HasForeignKey(t => t.CampaignId);
+
 
             modelBuilder.Entity<Tweets>().HasKey(p => p.TweetID);
             modelBuilder.Entity<TweetMetric>().HasKey(p => p.TweetID);

@@ -85,6 +85,7 @@ namespace Scrutz.Service
             existinginfluencer.TwitterHandle = influencer.TwitterHandle;
             existinginfluencer.FacebookHanlde = influencer.FacebookHanlde;
             existinginfluencer.LinkedKeywords = influencer.LinkedKeywords;
+            existinginfluencer.SocialPlatforms = influencer.SocialPlatforms;
 
 
             try

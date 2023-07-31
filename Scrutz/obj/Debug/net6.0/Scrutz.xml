@@ -173,6 +173,18 @@
         <member name="M:Scrutz.Migrations.Initial.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
             <inheritdoc />
         </member>
+        <member name="T:Scrutz.Migrations.YourMigrationName">
+            <inheritdoc />
+        </member>
+        <member name="M:Scrutz.Migrations.YourMigrationName.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Scrutz.Migrations.YourMigrationName.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Scrutz.Migrations.YourMigrationName.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
         <member name="M:Scrutz.Service.Communication.AccountSettingResponse.#ctor(Scrutz.Model.AccountSetting)">
             <summary>
             Creates a success response.

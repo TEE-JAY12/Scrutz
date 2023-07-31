@@ -91,7 +91,8 @@ namespace Scrutz.Controllers
                 InstagramHandle = influencerDTO.InstagramHandle,
                 TwitterHandle = influencerDTO.TwitterHandle,
                 FacebookHanlde = influencerDTO.FacebookHanlde,
-                LinkedKeywords = influencerDTO.LinkedKeywords
+                LinkedKeywords = influencerDTO.LinkedKeywords,
+                SocialPlatforms = influencerDTO.SocialPlatforms
             };
             var result = await _influencerService.AddAsync(influencer);
 
@@ -127,7 +128,8 @@ namespace Scrutz.Controllers
                 InstagramHandle = influencerDTO.InstagramHandle,
                 TwitterHandle = influencerDTO.TwitterHandle,
                 FacebookHanlde = influencerDTO.FacebookHanlde,
-                LinkedKeywords = influencerDTO.LinkedKeywords
+                LinkedKeywords = influencerDTO.LinkedKeywords,
+                SocialPlatforms = influencerDTO.SocialPlatforms
             };
             var result = await _influencerService.UpdateAsync(id, influencer);
 
