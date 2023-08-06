@@ -80,11 +80,67 @@ namespace Scrutz.Repository
                 query = query.Where(c => c.CampaignStatus == campaignStatus.Value);
             }
 
-            int PageSize = 10;
+            int PageSize = 8;
             var pagedList = await Task.FromResult(PagedList<Campaign>.ToPagedList(query, pageQuery.pageNumber, PageSize));
 
             return pagedList;
         }
+
+        //This is the roboust repo for the returing paged campaigns.
+        //Contains filtering by date and Search
+        public async Task<PagedList<Campaign>> PagedList(PageQuery pageQuery, DateTime? startDate, DateTime? endDate, ActiveStatus? campaignStatus, string searchTerm)
+        {
+            var query = _context.Campaigns.AsQueryable();
+
+
+            if (!string.IsNullOrEmpty(searchTerm))
+            {
+                // Split the search term into individual words
+                var searchTerms = searchTerm.Trim().Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+
+                // Apply the search filter for each word in the search term
+                foreach (var term in searchTerms)
+                {
+                    // Search for campaigns that have the term in their Title or Description (case-insensitive)
+                    
+                    //query = query.Where(c => c.CampaignName.ToLower().Contains(term.ToLower()) || c.CampaignDescription.ToLower().Contains(term.ToLower()) || c.LinkedKeywords.Contains(term.ToLower()));
+                    query = query.Where(c => c.CampaignName.ToLower() == term.ToLower() || c.CampaignDescription.ToLower() == term.ToLower() || c.LinkedKeywords.Contains(term.ToLower()));
+                   
+                }
+            }
+
+            // Apply the date range filter if both start date and end date are provided
+            if (startDate.HasValue && endDate.HasValue)
+            {
+                query = query.Where(c => c.StartDate >= startDate.Value && c.EndDate <= endDate.Value);
+            }
+            // Apply the start date filter if only the start date is provided
+            else if (startDate.HasValue)
+            {
+                query = query.Where(c => c.StartDate >= startDate.Value);
+            }
+
+            // Apply the campaign status filter if the status is provided
+            if (campaignStatus.HasValue)
+            {
+                query = query.Where(c => c.CampaignStatus == campaignStatus.Value);
+            }
+
+            // Apply the search filter if a search term is provided
+            //if (!string.IsNullOrEmpty(searchTerm))
+            //{
+            //    query = query.Where(c => c.CampaignName.Contains(searchTerm) || c.CampaignDescription.Contains(searchTerm) || c.LinkedKeywords.Contains(searchTerm));
+            //}
+
+
+
+            int PageSize = 8;
+            var pagedList = await Task.FromResult(PagedList<Campaign>.ToPagedList(query, pageQuery.pageNumber, PageSize));
+
+            return pagedList;
+        }
+
+
 
 
         public void Remove(Campaign campaign)

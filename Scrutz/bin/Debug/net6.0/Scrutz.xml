@@ -57,6 +57,12 @@
             </summary>
             <returns>List of campaigns.</returns> 
         </member>
+        <member name="M:Scrutz.Controllers.CampaignController.GetCampaignsPaged(Scrutz.Model.PageQuery,System.Nullable{System.DateTime},System.Nullable{System.DateTime},System.Nullable{Scrutz.Model.ActiveStatus},System.String)">
+            <summary>
+            Lists all campaigns Paged.Returns Paged Data will filtering
+            </summary>
+            <returns>List of campaigns.</returns> 
+        </member>
         <member name="M:Scrutz.Controllers.CampaignController.GetCampaigns">
             <summary>
             Lists all campaigns .

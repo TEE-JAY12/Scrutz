@@ -13,7 +13,7 @@ using Scrutz.Service.Interface;
 
 namespace Scrutz.Controllers
 {
-    [Authorize]
+    //[Authorize]
     [RequiredScope("Access_as_user")]
     [Route("api/[controller]")]
     [ApiController]
@@ -114,6 +114,37 @@ namespace Scrutz.Controllers
 
             return pagedResponse;
         }
+
+        /// <summary>
+        /// Lists all campaigns Paged.Returns Paged Data will filtering
+        /// </summary>
+        /// <returns>List of campaigns.</returns> 
+        [HttpGet("CampaignPaged")]
+        [ProducesResponseType(typeof(PagedList<Campaign>), 200)]
+        public async Task<PagedResponse<Campaign>> GetCampaignsPaged([FromQuery] PageQuery pageQuery, [FromQuery] DateTime? startDate, [FromQuery] DateTime? endDate, [FromQuery] ActiveStatus? campaignStatus, [FromQuery] string searchTerm)
+        {
+            var campaigns = await _campaignService.PagedList(pageQuery, startDate, endDate, campaignStatus, searchTerm);
+
+            var metadata = new
+            {
+                campaigns.TotalCount,
+                campaigns.PageSize,
+                campaigns.CurrentPage,
+                campaigns.TotalPages,
+                campaigns.HasNext,
+                campaigns.HasPrevious
+            };
+            Response.Headers.Add("X-Pagination", JsonConvert.SerializeObject(metadata));
+
+            var pagedResponse = new PagedResponse<Campaign>
+            {
+                Items = campaigns,
+                Metadata = metadata
+            };
+
+            return pagedResponse;
+        }
+
 
         /// <summary>
         /// Lists all campaigns .
@@ -249,6 +280,13 @@ namespace Scrutz.Controllers
 
             return Ok(counts);
         }
+
+
+
+
+
+
+
 
 
     }

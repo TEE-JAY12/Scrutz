@@ -16,5 +16,7 @@ namespace Scrutz.Service.Interface
         Task<PagedList<Campaign>> PagedListAsyncs(PageQuery pageQuery, DateTime? startDate, DateTime? endDate, ActiveStatus? campaignStatus);
 
         Task<Dictionary<string, object>> GetCampaignCountByStatusAsync();
+
+        Task<PagedList<Campaign>> PagedList(PageQuery pageQuery, DateTime? startDate, DateTime? endDate, ActiveStatus? campaignStatus, string searchTerm);
     }
 }

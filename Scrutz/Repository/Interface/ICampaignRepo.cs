@@ -18,5 +18,7 @@ namespace Scrutz.Repository.Interface
 
         Task<int> GetCampaignCountByStatusAsync();
 
+        Task<PagedList<Campaign>> PagedList(PageQuery pageQuery, DateTime? startDate, DateTime? endDate, ActiveStatus? campaignStatus, string searchTerm);
+
     }
 }

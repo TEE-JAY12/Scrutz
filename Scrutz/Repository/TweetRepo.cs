@@ -35,7 +35,7 @@ namespace Scrutz.Repository
                 .Where(tweet => tweet.CampaignId == campaignId)
                 .AsQueryable();
 
-            int PageSize = 10;
+            int PageSize = 8;
 
             //var pagedList = await Task.FromResult(PagedList<Tweets>.ToPagedList(query, pageQuery.pageNumber, pageQuery.pageSize));
             var pagedList = await Task.FromResult(PagedList<Tweets>.ToPagedList(query, pageQuery.pageNumber, PageSize));
@@ -60,7 +60,7 @@ namespace Scrutz.Repository
                 query = query.Where(tweet => tweet.CreatedAt >= startDate.Value);
             }
 
-            int PageSize = 10;
+            int PageSize = 8;
             var pagedList = await Task.FromResult(PagedList<Tweets>.ToPagedList(query, pageQuery.pageNumber, PageSize));
             return pagedList;
         }
@@ -74,7 +74,7 @@ namespace Scrutz.Repository
                 .AsQueryable();
 
             int PageNumber = 1;
-            int PageSize = 10;
+            int PageSize = 8;
 
             var pagedList = await Task.FromResult(PagedList<Tweets>.ToPagedList(query, PageNumber, PageSize));
 

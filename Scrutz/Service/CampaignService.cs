@@ -63,6 +63,14 @@ namespace Scrutz.Service
             return campaign;
         }
 
+        public async Task<PagedList<Campaign>> PagedList(PageQuery pageQuery, DateTime? startDate, DateTime? endDate, ActiveStatus? campaignStatus, string searchTerm)
+        {
+
+            var campaign = await _campaignRepository.PagedListAsyncs(pageQuery, startDate, endDate, campaignStatus);
+
+            return campaign;
+        }
+
 
         public async Task<IEnumerable<Campaign>> ListAsync()
         {
